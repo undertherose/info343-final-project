@@ -1,2 +1,2 @@
-# info343-final-project
-Final group project for INFO 343: Client-Side Web Development
+# Project 4
+Create your project here! Make sure to follow the instructions on Canvas regarding getting set up (i.e., creating a `development` branch), and submitting your project.
