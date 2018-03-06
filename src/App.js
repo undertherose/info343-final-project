@@ -97,8 +97,8 @@ class App extends Component {
                     <div className="sub-container">
                         <nav>
                             <ul>
-                                <li className="title"><h2><span className="title1">Sne</span><span className="title2">k</span></h2></li>
-                                <li><NavLink to="/play">Play Snek!</NavLink></li>
+                                <li className="title"><h2>TITLE</h2></li>
+                                <li><NavLink to="/play">Snake</NavLink></li>
                                 <li><NavLink to="/scores">Scores</NavLink></li>
                                 <li><NavLink to="/chat">Chat</NavLink></li>
                                 <li className="signout-btn float-right">
