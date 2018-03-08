@@ -9,6 +9,7 @@ export class SignIn extends Component {
             email: '',
             password: '',
             username: '',
+            errorMessage: this.props.error
         };
     }
 
@@ -50,6 +51,9 @@ export class SignIn extends Component {
                     </Link>
                     <Link to="/signup" className="float-right">Don't have an account?</Link>
                 </div>
+                {this.state.errorMessage &&
+                    <p className="alert alert-danger">{this.state.errorMessage}</p>
+                }
             </div>
         )
     }

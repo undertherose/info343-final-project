@@ -18,12 +18,16 @@ body, html {
     z-index: -1;
 }
 
+.comment-section {
+    display: none;
+}
+
 .container, .sub-container{
     margin: 0px;
     align-content: center;
 }
 
-.container, .sub-container, table {
+.container, .sub-container, table, .snake-app {
     margin-left: auto;
     margin-right: auto;
 }
@@ -98,11 +102,13 @@ nav li a:hover:not(.active) {
 
 .snake-app {
     position: fixed;
+    left: 0;
+    width: 100%;
     text-align: center;
-    left: 0px;
     background-color: lightblue;
     align-content: center;
     display: block;
+    z-index: 10;
 }
 
 .title1 {
@@ -160,6 +166,11 @@ th {
         margin-top: 100px;
     }
 
+    .comment-section {
+        display: initial;
+        float: right;
+    }
+    
     .gameOver{
         font-size: 7em;
     }
@@ -181,6 +192,10 @@ th {
     .signout-btn {
         margin-top: 5px;
         margin-right: 5px;
+    }
+
+    .snake-app {
+        left: 100px
     }
 
     table {

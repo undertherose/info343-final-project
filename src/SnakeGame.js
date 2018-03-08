@@ -12,9 +12,22 @@ export class SnakeGame extends Component {
         super(props);
         this.size = 20; // Size of snake and fruit
 
+        // Prevent arrow keys from scrolling around on the page
+        // https://stackoverflow.com/questions/8916620/disable-arrow-key-scrolling-in-users-browser
+        window.addEventListener("keydown", function(e) {
+            // space and arrow keys
+            if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+                e.preventDefault();
+            }
+        }, false);
+
         // Responsive board height BUT requires page to be refreshed to update properly
-        this.boardHeight = Math.floor(window.innerHeight / 2); 
-        this.boardWidth = window.innerWidth;
+        this.boardHeight = Math.floor(window.innerHeight / 1.5)
+        if (window.innerWidth < 768) {
+            this.boardWidth = Math.floor(window.innerWidth);
+        } else {
+            this.boardWidth = Math.floor(window.innerWidth / 2);
+        }
 
         // Starting movement speed (lower is faster)
         this.defaultSpeed = 80;

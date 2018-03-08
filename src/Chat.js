@@ -39,10 +39,10 @@ export class Chat extends Component {
   
     render() {
         return (
-            <form onSubmit={this.onAddMessage}>
-            <p>Chat with your friends!<br/>Be friendly, and <em>don't</em> spam!</p>
-            <input className="form-control col-md-10 d-inline" type="text" ref={node => this.input = node}/>
-            <input className="btn btn-primary col-md-2" type="submit" value="Send Message"/>
+            <form className="comment-section" onSubmit={this.onAddMessage}>
+            <p>Leave a comment or chat with other players...</p>
+            <input className="form-control col-md-7 d-inline" type="text" ref={node => this.input = node}/>
+            <input className="btn btn-primary col-md-5" type="submit" value="Send Message"/>
             <ul>
             <hr />
             {
