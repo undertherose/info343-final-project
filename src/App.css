@@ -162,6 +162,11 @@ th {
         font-size: 1rem;
     }
 
+    .account-link {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    
     .auth, form, .snake-app, table {
         margin-top: 100px;
     }
@@ -189,6 +194,11 @@ th {
         padding: 16px 16px;
     }
     
+    .profile-pic {
+        width: 56px;
+        height: 56px;
+        margin-right: 5px;
+    }
     .signout-btn {
         margin-top: 5px;
         margin-right: 5px;
