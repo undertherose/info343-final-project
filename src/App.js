@@ -9,6 +9,7 @@ import { HashRouter as Router, Route, NavLink, Redirect} from "react-router-dom"
 import './App.css';
 import firebase from 'firebase';
 import {Reacteroids} from './Games/Reacteroids-master/src/Reacteroids.js';
+import {FifteenPuzzle} from './Games/FifteenPuzzle/Fifteen.js';
 
 class App extends Component {
     constructor(props){
@@ -115,6 +116,7 @@ class App extends Component {
                                 <li><NavLink to="/play">Snake</NavLink></li>
                                 <li><NavLink to="/scores">Scores</NavLink></li>
                                 <li><NavLink to="/test">Reacteroids</NavLink></li>
+                                <li><NavLink to="/fift">Fifteen Puzzle</NavLink></li>
                                 <li className="signout-btn float-right">
                                     {
                                     this.state.isLoggedIn &&
@@ -147,6 +149,13 @@ class App extends Component {
                         <Route path="/test" render={(routerProps) => (
                             this.state.isLoggedIn ? (
                                 <Reacteroids />
+                            ) : (
+                                <Redirect to="/signin" />
+                            )
+                        )} />
+                        <Route path="/fift" render={(routerProps) => (
+                            this.state.isLoggedIn ? (
+                                <FifteenPuzzle />
                             ) : (
                                 <Redirect to="/signin" />
                             )

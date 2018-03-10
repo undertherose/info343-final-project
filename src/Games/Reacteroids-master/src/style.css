@@ -24,14 +24,14 @@ canvas {
 .score {
   display: block;
   position: absolute;
-  top: 15px;
+  top: 11vh;
   z-index: 1;
   font-size: 20px;
 }
 .controls {
   display: block;
   position: absolute;
-  top: 15px;
+  top: 11vh;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 1;
