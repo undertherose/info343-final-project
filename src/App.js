@@ -101,8 +101,8 @@ class App extends Component {
     render() {
         let accountStyles = {};
         if (this.state.user && this.state.user.photoURL) {
-            accountStyles["padding-top"] = 0;
-            accountStyles["padding-bottom"] = 0;
+            accountStyles["paddingTop"] = 0;
+            accountStyles["paddingBottom"] = 0;
         }
         return (
             <div className="container">

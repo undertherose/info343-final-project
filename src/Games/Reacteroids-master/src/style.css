@@ -1,8 +1,11 @@
+.reacteroids {
+    color: #ffffff;
+    font-family: 'PT Mono', serif;
+}
+
 body {
   padding: 0;
   margin: 0;
-  font-family: 'PT Mono', serif;
-  color: #ffffff;
 }
 canvas {
   display: block;
