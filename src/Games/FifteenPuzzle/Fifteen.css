@@ -1,0 +1,38 @@
+body {
+    text-align: center;
+}
+
+body, button {
+    font-family: cursive;
+    font-size: 14pt;
+}
+
+#puzzlearea {
+    margin: 30vh auto auto auto;
+    height: 800px;
+    width: 800px;
+    position: relative;
+}
+
+.square {
+    transition: 0.5s;
+    color: black;
+    border: solid black 2px;
+    height: 198px;
+    width: 198px;
+    position: absolute;
+    font-size: 40pt;
+    cursor: default;
+    background-image: url("https://media.giphy.com/media/omAAeYvzPdVZK/giphy.gif");
+    background-repeat: no-repeat;
+    background-size: 800px 800px;
+    border-radius: 3px;
+}
+
+.highlight {
+    color: red;
+    border: solid red 2px;
+    cursor: pointer;
+}
+
+
