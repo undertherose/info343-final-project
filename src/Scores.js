@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import {RadialBarChart, RadialBar} from 'recharts';
+import  { RadialBarChart, RadialBar } from 'recharts';
+import * as d3 from 'd3';
+
 // Component representing the scores page
 export class Scores extends Component {
     constructor(props) {
@@ -25,8 +27,7 @@ export class Scores extends Component {
 
     // Changes the game data to be shown
     changeGame(name) {
-        this.setState({game: name});
-        
+        this.setState({game: name});   
     }
 
     render() {
@@ -70,27 +71,37 @@ class SnakeScores extends Component {
     }
 
     render() {
+         let radialData = d3.nest()
+         .key(function(d) { return d.name;})
+         .rollup(function(v) { return d3.sum(v, function (d) { return d.score;})})
+         .entries(this.state.scoreData);
+         console.log(radialData);     
         return (
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Username</th>
-                        <th>Score</th>
-                    </tr>
-                    {
-                        this.state.scoreData.map((d, i) => {
-                            return (
-                                <tr key={'item-' + i}>
-                                    <td>{i + 1}</td>
-                                    <td>{Object.entries(d)[0][1]}</td>
-                                    <td>{Object.entries(d)[1][1]}</td>
-                                </tr>
-                            );
-                        })
-                    }
-                </tbody>
-            </table>
+            <div className="charts-container">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                        {
+                            this.state.scoreData.map((d, i) => {
+                                return (
+                                    <tr key={'item-' + i}>
+                                        <td>{i + 1}</td>
+                                        <td>{Object.entries(d)[0][1]}</td>
+                                        <td>{Object.entries(d)[1][1]}</td>
+                                    </tr>
+                                );
+                            })
+                        }
+                    </tbody>
+                </table>
+                <RadialBarChart width={730} height={250} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
+                    <RadialBar minAngle={15} label={{ fill: '#666', position: 'insideStart' }} background clockWise={true} dataKey='uv' />
+                </RadialBarChart>
+            </div>
         )
     }
 }
