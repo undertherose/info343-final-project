@@ -15,7 +15,7 @@ body, button {
 }
 
 .square {
-    transition: 0.5s;
+    transition: .5s;
     color: black;
     border: solid black 2px;
     height: 198px;

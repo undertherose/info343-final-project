@@ -31,8 +31,8 @@ export class FifteenPuzzle extends Component {
     shuffle() {
         this.setState({
             disabled: false,
-            won: false,
-        })
+            won: false
+        });
         let squares = document.querySelectorAll("#puzzlearea div");
         for (let i = 0; i < squares.length; i++) {
             squares[i].classList.remove("solved");
@@ -44,7 +44,7 @@ export class FifteenPuzzle extends Component {
                 randPick.click();
             }
         }
-        this.setState({moves: 0}); //reset moves after clicking
+        this.setState({ moves: 0 }); //reset moves after clicking
     }
 
     //function that determines if tile is able to move using x and y position. Returns boolean
@@ -100,8 +100,11 @@ export class FifteenPuzzle extends Component {
                 bool = false;
             }
         }
-        if (bool) {
-            this.setState({ won: bool });
+        if (bool && !this.state.disabled) {
+            this.setState({
+                won: bool,
+                disabled: true
+            });
             for (let i = 0; i < squares.length; i++) {
                 squares[i].classList.add("solved");
             }
@@ -111,18 +114,21 @@ export class FifteenPuzzle extends Component {
     //function that takes event (e) that handles when a user wants to move
     //a tile
     moveTile(e) {
-        let x = this.getX(e.target);
-        let y = this.getY(e.target);
-        if (this.canMove(x, y)) {
-            e.target.style.left = this.state.xCord + "px";
-            e.target.style.top = this.state.yCord + "px";
-            this.setState({
-                xCord: this.state.xCord = x,
-                yCord: this.state.yCord = y,
-                moves: this.state.moves + 1
-            })
-            if (!this.state.disabled) {
-                this.checkGame();
+        //only moveable if game hasn't been won
+        if (!e.target.classList.contains("solved")) { 
+            let x = this.getX(e.target);
+            let y = this.getY(e.target);
+            if (this.canMove(x, y)) {
+                e.target.style.left = this.state.xCord + "px";
+                e.target.style.top = this.state.yCord + "px";
+                this.setState({
+                    xCord: this.state.xCord = x,
+                    yCord: this.state.yCord = y,
+                    moves: this.state.moves + 1
+                })
+                if (!this.state.disabled) {
+                    this.checkGame();
+                }
             }
         }
     }
@@ -166,14 +172,13 @@ export class FifteenPuzzle extends Component {
 
     //renders puzzle
     render() {
-        let squares = this.makeSquares();
         return (
             <div>
                 <div id="puzzlearea">{
-                    squares
+                    this.makeSquares()
                 }
                 </div>
-                {this.state.won && <div className="won">{"YOU WON IN " + this.state.moves + " MOVES!!!"}</div>}
+                {this.state.won && <div className="won">{"YOU WON IN " + (this.state.disabled && this.state.moves) + " MOVES!!!"}</div>}
                 <button className="btn btn btn-warning" onClick={() => this.shuffle()}>Shuffle</button>
                 <label htmlFor="files" className="btn btn-primary">Change Image</label>
                 <input id="files" type="file" style={{ visibility: "hidden" }} onChange={(e) => this.changePic(e)}></input>
