@@ -12,32 +12,42 @@ export class FifteenPuzzle extends Component {
             size: 200,
             rows: 4,
             moves: 0,
-            disabled: true
+            disabled: true,
+            won: false
         }
     }
 
+    //function that returns x position of tile
     getX(tile) {
         return parseInt(tile.style.left);
     }
 
+    //function that returns y position of tile
     getY(tile) {
         return parseInt(tile.style.top);
     }
 
+    //function that shuffles the board 
     shuffle() {
         this.setState({
-            disabled: false
-        })
+            disabled: false,
+            won: false
+        });
+        let squares = document.querySelectorAll("#puzzlearea div");
+        for (let i = 0; i < squares.length; i++) {
+            squares[i].classList.remove("solved");
+        }
         for (let i = 0; i < 1000; i++) {
             let neighbors = this.getNeighbors();
             let randPick = neighbors[(Math.floor(Math.random() * neighbors.length))];
             if (randPick) {
-
                 randPick.click();
             }
         }
+        this.setState({ moves: 0 }); //reset moves after clicking
     }
 
+    //function that determines if tile is able to move using x and y position. Returns boolean
     canMove(x, y) {
         if ((y == this.state.yCord - this.state.size || y == this.state.yCord + this.state.size)
             && x == this.state.xCord) {
@@ -49,6 +59,7 @@ export class FifteenPuzzle extends Component {
         return false;
     }
 
+    //function that returns an array of tiles that are next to the empty square
     getNeighbors() {
         let squares = document.querySelectorAll("#puzzlearea div");
         let result = [];
@@ -62,6 +73,8 @@ export class FifteenPuzzle extends Component {
         return result;
     }
 
+    //function that takes an event e and determines
+    //whether or not to highlight a tile if it's moveable
     onHover(e) {
         let x = this.getX(e.target);
         let y = this.getY(e.target);
@@ -70,10 +83,13 @@ export class FifteenPuzzle extends Component {
         }
     }
 
+    //function that handles when a user "unhovers" from a tile
     unHover(tile) {
         tile.classList.remove("highlight");
     }
 
+    //function that checks if the game is over and alerts the player if they have won
+    //changes the styling of the background so only the picture appears
     checkGame() {
         let squares = document.querySelectorAll("#puzzlearea div");
         let bool = true;
@@ -84,25 +100,40 @@ export class FifteenPuzzle extends Component {
                 bool = false;
             }
         }
-        if (bool) {
-            alert("you won in " + this.state.moves + " moves!");
-        }
-    }
-
-    moveTile(e) {
-        let x = this.getX(e.target);
-        let y = this.getY(e.target);
-        if (this.canMove(x, y)) {
-            e.target.style.left = this.state.xCord + "px";
-            e.target.style.top = this.state.yCord + "px";
+        if (bool && !this.state.disabled) {
             this.setState({
-                xCord: this.state.xCord = x,
-                yCord: this.state.yCord = y,
-                moves: this.state.moves + 1
-            })
+                won: bool,
+                disabled: true
+            });
+            for (let i = 0; i < squares.length; i++) {
+                squares[i].classList.add("solved");
+            }
         }
     }
 
+    //function that takes event (e) that handles when a user wants to move
+    //a tile
+    moveTile(e) {
+        //only moveable if game hasn't been won
+        if (!e.target.classList.contains("solved")) { 
+            let x = this.getX(e.target);
+            let y = this.getY(e.target);
+            if (this.canMove(x, y)) {
+                e.target.style.left = this.state.xCord + "px";
+                e.target.style.top = this.state.yCord + "px";
+                this.setState({
+                    xCord: this.state.xCord = x,
+                    yCord: this.state.yCord = y,
+                    moves: this.state.moves + 1
+                })
+                if (!this.state.disabled) {
+                    this.checkGame();
+                }
+            }
+        }
+    }
+
+    //function that generates generates an array of squares and returns that array
     makeSquares() {
         let squares = [];
         for (let i = 0; i < (this.state.rows * this.state.rows - 1); i++) {
@@ -123,6 +154,7 @@ export class FifteenPuzzle extends Component {
         return squares;
     }
 
+    //function that handles event (e) when user changes picture in background of puzzle
     changePic(e) {
         let squares = document.querySelectorAll("#puzzlearea div");
         if (e.target.files && e.target.files[0]) {
@@ -138,19 +170,19 @@ export class FifteenPuzzle extends Component {
         }
     }
 
+    //renders puzzle
     render() {
-        let squares = this.makeSquares();
-        return (<div>
-            <div id="puzzlearea">{
-                squares
-            }
+        return (
+            <div>
+                <div id="puzzlearea">{
+                    this.makeSquares()
+                }
+                </div>
+                {this.state.won && <div className="won">{"YOU WON IN " + (this.state.disabled && this.state.moves) + " MOVES!!!"}</div>}
+                <button className="btn btn btn-warning" onClick={() => this.shuffle()}>Shuffle</button>
+                <label htmlFor="files" className="btn btn-primary">Change Image</label>
+                <input id="files" type="file" style={{ visibility: "hidden" }} onChange={(e) => this.changePic(e)}></input>
             </div>
-            <button className="btn btn btn-warning" onClick={() => this.shuffle()}>Shuffle</button>
-            {!this.state.disabled &&
-                <button className="btn btn btn-primary" onClick={() => this.checkGame()}>Check</button>
-            }
-            <input type="file" onChange={(e) => this.changePic(e)}></input>
-        </div>
         );
     }
 }
