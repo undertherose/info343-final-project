@@ -8,7 +8,7 @@ body, button {
 }
 
 #puzzlearea {
-    margin: 30vh auto auto auto;
+    margin: 5rem auto auto auto;
     height: 800px;
     width: 800px;
     position: relative;
@@ -27,6 +27,7 @@ body, button {
     background-repeat: no-repeat;
     background-size: 800px 800px;
     border-radius: 3px;
+    line-height: 185px;
 }
 
 .highlight {
@@ -35,4 +36,19 @@ body, button {
     cursor: pointer;
 }
 
+.solved {
+    height: 200px;
+    width: 200px;
+    border: 0px;
+    border-radius: 0px;
+    font-size: 0px;
+}
 
+label {
+    color: black !important;
+    margin: 0px auto auto 2rem;
+}
+
+button {
+    margin-left: 20%;
+}

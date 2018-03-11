@@ -12,7 +12,7 @@ export class FifteenPuzzle extends Component {
             size: 200,
             rows: 4,
             moves: 0,
-            disabled: true
+            disabled: true,
         }
     }
 
@@ -28,6 +28,10 @@ export class FifteenPuzzle extends Component {
         this.setState({
             disabled: false
         })
+        let squares = document.querySelectorAll("#puzzlearea div");
+        for (let i = 0; i < squares.length; i++) {
+            squares[i].classList.remove("solved");
+        }
         for (let i = 0; i < 1000; i++) {
             let neighbors = this.getNeighbors();
             let randPick = neighbors[(Math.floor(Math.random() * neighbors.length))];
@@ -86,6 +90,9 @@ export class FifteenPuzzle extends Component {
         }
         if (bool) {
             alert("you won in " + this.state.moves + " moves!");
+            for (let i = 0; i < squares.length; i++) {
+                squares[i].classList.add("solved");
+            }
         }
     }
 
@@ -100,6 +107,9 @@ export class FifteenPuzzle extends Component {
                 yCord: this.state.yCord = y,
                 moves: this.state.moves + 1
             })
+            if (!this.state.disabled) {
+                this.checkGame();
+            }
         }
     }
 
@@ -146,10 +156,8 @@ export class FifteenPuzzle extends Component {
             }
             </div>
             <button className="btn btn btn-warning" onClick={() => this.shuffle()}>Shuffle</button>
-            {!this.state.disabled &&
-                <button className="btn btn btn-primary" onClick={() => this.checkGame()}>Check</button>
-            }
-            <input type="file" onChange={(e) => this.changePic(e)}></input>
+            <label htmlFor="files" className="btn btn-primary">Change Image</label>
+            <input id="files" type="file" style={{visibility:"hidden"}} onChange={(e) => this.changePic(e)}></input>
         </div>
         );
     }
