@@ -18,6 +18,20 @@ body, html {
     z-index: -1;
 }
 
+.scores-container {
+    margin-top: 130px;
+    width: 100%;
+}
+
+.dropdown {
+    padding: 0% 30%;
+}
+
+
+
+
+
+
 .comment-section {
     display: none;
 }
@@ -31,6 +45,7 @@ body, html {
     margin-left: auto;
     margin-right: auto;
 }
+
 
 .game-info {
     background-color: grey;

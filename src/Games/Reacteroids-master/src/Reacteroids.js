@@ -151,7 +151,7 @@ export class Reacteroids extends Component {
     this.setState({
       inGame: false,
     });
-
+    this.props.updateScore(this.state.currentScore, "Reacteroids");
     // Replace top score
     if(this.state.currentScore > this.state.topScore){
       this.setState({
