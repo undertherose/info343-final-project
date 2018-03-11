@@ -1,7 +1,6 @@
-
 import React, { Component } from 'react';
 import firebase from 'firebase';
-
+import {RadialBarChart, RadialBar} from 'recharts';
 // Component representing the scores page
 export class Scores extends Component {
     constructor(props) {
