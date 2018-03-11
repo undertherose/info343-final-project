@@ -84,12 +84,12 @@ class App extends Component {
     }
 
     // Update the score in the firebase database with the name and the score value
-    updateScore(score) {
+    updateScore(score, gameName) {
         this.setState({score: score});
         let entry = {};
         entry['name'] = this.state.user.displayName;
         entry['score'] = score;
-        let ref = firebase.database().ref('scores');
+        let ref = firebase.database().ref(gameName + 'Scores');
         ref.push(entry);
     }
 
@@ -148,7 +148,7 @@ class App extends Component {
                         )} />
                         <Route path="/test" render={(routerProps) => (
                             this.state.isLoggedIn ? (
-                                <Reacteroids />
+                                <Reacteroids updateScore = {(score, gameName) => this.updateScore(score, gameName)}/>
                             ) : (
                                 <Redirect to="/signin" />
                             )
@@ -164,7 +164,7 @@ class App extends Component {
                             this.state.isLoggedIn && this.state.user ? (
                                 <div>
                                 <Chat {...routerProps} name={this.state.user.displayName} />
-                                <SnakeGame {...routerProps} updateScore = {(score) => this.updateScore(score)} />
+                                <SnakeGame {...routerProps} updateScore = {(score, gameName) => this.updateScore(score, gameName)} />
                                 </div>
                             ) : (
                                 <SignIn {...routerProps} handleSignIn={this.handleSignIn} handleSignUp={this.handleSignUp} error={this.state.errorMessage}/>

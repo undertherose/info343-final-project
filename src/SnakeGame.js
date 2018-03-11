@@ -225,7 +225,7 @@ export class SnakeGame extends Component {
             fruitLocation: [this.getRandomY(), this.getRandomX()],
             score: this.state.segments.length - 1
         });
-        this.props.updateScore(this.state.score);
+        this.props.updateScore(this.state.score, "Snake");
     }
 
     // Check if snake hits its own segment
