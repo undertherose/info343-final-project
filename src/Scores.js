@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import  { RadialBarChart, RadialBar, Label, LabelList } from 'recharts';
+import { RadialBarChart, RadialBar, Label, LabelList, Tooltip } from 'recharts';
 import * as d3 from 'd3';
 
 // Component representing the scores page
@@ -27,13 +27,13 @@ export class Scores extends Component {
 
     // Changes the game data to be shown
     changeGame(name) {
-        this.setState({game: name});   
+        this.setState({ game: name });
     }
 
     render() {
         return (
             <div className="scores-container">
-                <div className="dropdown">                   
+                <div className="dropdown">
                     <select className="form-control" aria-labelledby="dropdownMenuButton" onChange={(event) => {
                         this.changeGame(event.target.value);
                     }}>
@@ -47,7 +47,6 @@ export class Scores extends Component {
                     {this.state.game === "Reacteroids" && <Charts name="ReacteroidsScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
                     {this.state.game === "FifteenPuzzle" && <Charts name="FifteenPuzzleScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
                 </div>
-                <Radial snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>
             </div>
         )
     }
@@ -121,6 +120,7 @@ class Charts extends Component {
 
         return (
             <div className="charts-container">
+                <div className="flex-item">
                 <table>
                     <tbody>
                         <tr>
@@ -141,13 +141,30 @@ class Charts extends Component {
                         }
                     </tbody>
                 </table>
+                </div>
+                <div className="flex-item">
+                <h4 id="avg">Your Average vs. Top Ten Average</h4>
                 <RadialBarChart width={750} height={750} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
+                    <Tooltip/>
                     <RadialBar minAngle={15} background clockWise={true} dataKey='value' >
                     <LabelList dataKey="key" fill="#EEE"/>
                     </RadialBar>
                 </RadialBarChart>
+                </div>
             </div>
         )
     }
 }
 
+class TopScores extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: ""
+        }
+    }
+
+    componentDidMount() {
+        let refs = ["SnakeScores", "ReacteroidsScores", "FifteenPuzzleScores"];
+    }
+}

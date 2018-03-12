@@ -105,7 +105,7 @@ class App extends Component {
             accountStyles["paddingBottom"] = 0;
         }
         return (
-            <div className="container">
+            <div >
                 <Router>
                     <div className="sub-container">
                         <nav>
