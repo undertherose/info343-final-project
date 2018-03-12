@@ -126,20 +126,30 @@ class Charts extends Component {
                         <tr>
                             <th>Rank</th>
                             <th>Username</th>
-                            <th>Score</th>
-                        </tr>
-                        {
-                            topTen.map((d, i) => {
-                                return (
-                                    <tr key={'item-' + i}>
-                                        <td>{i + 1}</td>
-                                        <td>{Object.entries(d)[0][1]}</td>
-                                        <td>{Object.entries(d)[1][1]}</td>
-                                    </tr>
-                                );
-                            })
-                        }
-                    </tbody>
+                                <th>Score</th>
+                            </tr>
+                            {
+                                topTen.map((d, i) => {
+                                    if (d.name !== this.state.user) {
+                                        return (
+                                            <tr key={'item-' + i}>
+                                                <td>{i + 1}</td>
+                                                <td>{Object.entries(d)[0][1]}</td>
+                                                <td>{Object.entries(d)[1][1]}</td>
+                                            </tr>
+                                        );
+                                    } else {
+                                        return (
+                                            <tr className="userTopScore" key={'item-' + i}>
+                                                <td>{i + 1}</td>
+                                                <td>{Object.entries(d)[0][1]}</td>
+                                                <td>{Object.entries(d)[1][1]}</td>
+                                            </tr>
+                                        );
+                                    }
+                                })
+                            }
+                        </tbody>
                 </table>
                 </div>
                 <div className="flex-item">

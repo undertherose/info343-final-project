@@ -15,6 +15,8 @@ class App extends Component {
     constructor(props){
         super(props);
 
+        
+
         this.handleSignIn = this.handleSignIn.bind(this);
         this.handleSignUp = this.handleSignUp.bind(this);
         this.handleSignOut = this.handleSignOut.bind(this);
@@ -24,6 +26,7 @@ class App extends Component {
             score: 0
         };
     }
+
 
     componentDidMount() {
         // Use the firebase onAuthstateChanged method to watch for changes in authentication
@@ -90,7 +93,10 @@ class App extends Component {
         entry['name'] = this.state.user.displayName;
         entry['score'] = score;
         let ref = firebase.database().ref(gameName + 'Scores');
+        let allRef = firebase.database().ref('AllScores');
         ref.push(entry);
+        entry['gameName'] = gameName;
+        allRef.push(entry);
     }
 
     // Intended as a prop for components
