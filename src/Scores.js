@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import  { RadialBarChart, RadialBar } from 'recharts';
+import  { RadialBarChart, RadialBar, Cell, Tooltip, Legend } from 'recharts';
 import * as d3 from 'd3';
 
 // Component representing the scores page
@@ -40,12 +40,13 @@ export class Scores extends Component {
                     }}>
                         <option value="Snake" className="dropdown-item" >Snake</option>
                         <option value="Reacteroids" className="dropdown-item">Reacteroids</option>
-                        <option value="Fifteenboxes"className="dropdown-item">Fifteen Boxes</option>
+                        <option value="FifteenPuzzle"className="dropdown-item">Fifteen Puzzle</option>
                     </select>
                 </div>
                 <div className="charts">
                     {this.state.game === "Snake" && <SnakeScores snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
                     {this.state.game === "Reacteroids" && <ReacteroidsScores snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
+                    {this.state.game === "FifteenPuzzle" && <FifteenPuzzleScores snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
                 </div>
             </div>
         )
@@ -76,7 +77,10 @@ class SnakeScores extends Component {
          .key(function(d) { return d.name;})
          .rollup(function(v) { return d3.sum(v, function (d) { return d.score;})})
          .entries(this.state.scoreData);
-         console.log(radialData);     
+         console.log(radialData); 
+
+         const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+         
         return (
             <div className="charts-container">
                 <table>
@@ -100,7 +104,16 @@ class SnakeScores extends Component {
                     </tbody>
                 </table>
                 <RadialBarChart width={730} height={250} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
-                    <RadialBar minAngle={15} label={{ fill: '#666', position: 'insideStart' }} background clockWise={true} dataKey='uv' />
+                    <RadialBar minAngle={15} label={{ fill: '#666', position: 'insideStart' }} background clockWise={true} dataKey='value'>
+                        {
+                            radialData.map((entry, index) => {
+                                const color = entry.value > 4000 ? COLORS[0] : COLORS[1];
+                                return <Cell fill={color} />;
+                            })
+                        }
+                    </RadialBar>
+                    <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" />
+                    <Tooltip />
                 </RadialBarChart>
             </div>
         )
@@ -118,6 +131,49 @@ class ReacteroidsScores extends Component {
     // On mount, pull from the "scores" table in the database
     componentDidMount() {
         let ref = firebase.database().ref('ReacteroidsScores');
+        let db = ref.orderByChild("score").limitToLast(10);
+        db.on('value', (snapshot => {
+            let dat = this.props.snapshotToArray(snapshot);
+            this.setState({ scoreData: dat });
+        }));
+    }
+
+    render() {
+        return (
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Score</th>
+                    </tr>
+                    {
+                        this.state.scoreData.map((d, i) => {
+                            return (
+                                <tr key={'item-' + i}>
+                                    <td>{i + 1}</td>
+                                    <td>{Object.entries(d)[0][1]}</td>
+                                    <td>{Object.entries(d)[1][1]}</td>
+                                </tr>
+                            );
+                        })
+                    }
+                </tbody>
+            </table>
+        )
+    }
+}
+
+class FifteenPuzzleScores extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            scoreData: []
+        }
+    }
+    // On mount, pull from the "scores" table in the database
+    componentDidMount() {
+        let ref = firebase.database().ref('FifteenPuzzleScores');
         let db = ref.orderByChild("score").limitToLast(10);
         db.on('value', (snapshot => {
             let dat = this.props.snapshotToArray(snapshot);
