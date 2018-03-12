@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import  { RadialBarChart, RadialBar, Label, LabelList } from 'recharts';
+import { RadialBarChart, RadialBar, Label, LabelList } from 'recharts';
 import * as d3 from 'd3';
 
 // Component representing the scores page
@@ -27,24 +27,24 @@ export class Scores extends Component {
 
     // Changes the game data to be shown
     changeGame(name) {
-        this.setState({game: name});   
+        this.setState({ game: name });
     }
 
     render() {
         return (
             <div className="scores-container">
-                <div className="dropdown">                   
+                <div className="dropdown">
                     <select className="form-control" aria-labelledby="dropdownMenuButton" onChange={(event) => {
                         this.changeGame(event.target.value);
                     }}>
                         <option value="Snake" className="dropdown-item" >Snake</option>
                         <option value="Reacteroids" className="dropdown-item">Reacteroids</option>
-                        <option value="Fifteenboxes"className="dropdown-item">Fifteen Boxes</option>
+                        <option value="Fifteenboxes" className="dropdown-item">Fifteen Boxes</option>
                     </select>
                 </div>
                 <div className="charts">
-                    {this.state.game === "Snake" && <Charts name="SnakeScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
-                    {this.state.game === "Reacteroids" && <Charts name="ReacteroidsScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
+                    {this.state.game === "Snake" && <Charts name="SnakeScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)} />}
+                    {this.state.game === "Reacteroids" && <Charts name="ReacteroidsScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)} />}
                 </div>
             </div>
         )
@@ -70,7 +70,7 @@ class Charts extends Component {
             this.setState({ scoreData: dat });
         }));
         let name = firebase.auth().currentUser.displayName;
-        this.setState({user: name});
+        this.setState({ user: name });
     }
 
     getUserData(array) {
@@ -84,12 +84,12 @@ class Charts extends Component {
     }
 
     render() {
-         let radialData = d3.nest()
-         .key(function(d) { return d.name;})
-         .rollup(function(v) { return d3.mean(v, function (d) { return d.score;})})
-         .entries(this.state.scoreData);
-         console.log(radialData);  
-         this.getUserData(radialData);   
+        let radialData = d3.nest()
+            .key(function (d) { return d.name; })
+            .rollup(function (v) { return d3.mean(v, function (d) { return d.score; }) })
+            .entries(this.state.scoreData);
+        console.log(radialData);
+        this.getUserData(radialData);
         return (
             <div className="charts-container">
                 <table>
@@ -114,7 +114,7 @@ class Charts extends Component {
                 </table>
                 <RadialBarChart width={750} height={750} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
                     <RadialBar minAngle={15} background clockWise={true} dataKey='value' >
-                    <LabelList dataKey="key" fill="#EEE"/>
+                        <LabelList dataKey="key" fill="#EEE" />
                     </RadialBar>
                 </RadialBarChart>
             </div>
