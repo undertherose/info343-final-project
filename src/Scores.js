@@ -39,12 +39,13 @@ export class Scores extends Component {
                     }}>
                         <option value="Snake" className="dropdown-item" >Snake</option>
                         <option value="Reacteroids" className="dropdown-item">Reacteroids</option>
-                        <option value="Fifteenboxes" className="dropdown-item">Fifteen Boxes</option>
+                        <option value="FifteenPuzzle"className="dropdown-item">Fifteen Puzzle</option>
                     </select>
                 </div>
                 <div className="charts">
-                    {this.state.game === "Snake" && <Charts name="SnakeScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)} />}
-                    {this.state.game === "Reacteroids" && <Charts name="ReacteroidsScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)} />}
+                    {this.state.game === "Snake" && <Charts name="SnakeScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
+                    {this.state.game === "Reacteroids" && <Charts name="ReacteroidsScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
+                    {this.state.game === "FifteenPuzzle" && <Charts name="FifteenPuzzleScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
                 </div>
             </div>
         )
@@ -64,13 +65,15 @@ class Charts extends Component {
     // On mount, pull from the "scores" table in the database
     componentDidMount() {
         let ref = firebase.database().ref(this.props.name);
-        let db = ref.orderByChild("score").limitToLast(10);
-        db.on('value', (snapshot => {
-            let dat = this.props.snapshotToArray(snapshot);
-            this.setState({ scoreData: dat });
-        }));
         let name = firebase.auth().currentUser.displayName;
-        this.setState({ user: name });
+
+        let scores = ref.orderByChild("score");
+        scores.on('value', (snapshot => {
+            let dat = this.props.snapshotToArray(snapshot);
+            this.setState({ scoreData: dat, user: name });
+        }));
+        
+
     }
 
     getUserData(array) {
@@ -84,44 +87,69 @@ class Charts extends Component {
     }
 
     render() {
-        let radialData = d3.nest()
-            .key(function (d) { return d.name; })
-            .rollup(function (v) { return d3.mean(v, function (d) { return d.score; }) })
-            .entries(this.state.scoreData);
-        console.log(radialData);
-        this.getUserData(radialData);
+        let userScores = [];
+        this.state.scoreData.forEach((d) => {
+           if(d.name === this.state.user) {
+               userScores.push(d);
+           }
+        })
+
+        let topTen = [];
+        let amount = 0;
+        if (this.state.scoreData.length < 10) {
+            amount = this.state.scoreData.length;
+        } else {
+            amount = 10;
+        }
+        for(let i = 0; i < amount; i++) {
+            if (this.state.scoreData[i].name !== this.state.user) {
+                userScores.push(this.state.scoreData[i]);
+            }
+            topTen.push(this.state.scoreData[i]);
+        }
+         let radialData = d3.nest()
+         .key(function(d) { return d.name;})
+         .rollup(function(v) { return d3.mean(v, function (d) { return d.score;})})
+         .entries(userScores);
+         this.getUserData(radialData);   
+
+        console.log(this.state.scoreData);
+
+
+        
+
         return (
             <div className="charts-container">
                 <div className="flex-item">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Rank</th>
-                                <th>Username</th>
-                                <th>Score</th>
-                            </tr>
-                            {
-                                this.state.scoreData.map((d, i) => {
-                                    return (
-                                        <tr key={'item-' + i}>
-                                            <td>{i + 1}</td>
-                                            <td>{Object.entries(d)[0][1]}</td>
-                                            <td>{Object.entries(d)[1][1]}</td>
-                                        </tr>
-                                    );
-                                })
-                            }
-                        </tbody>
-                    </table>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                        {
+                            topTen.map((d, i) => {
+                                return (
+                                    <tr key={'item-' + i}>
+                                        <td>{i + 1}</td>
+                                        <td>{Object.entries(d)[0][1]}</td>
+                                        <td>{Object.entries(d)[1][1]}</td>
+                                    </tr>
+                                );
+                            })
+                        }
+                    </tbody>
+                </table>
                 </div>
                 <div className="flex-item">
-                    <h4 id="avg">Your Average vs. Top Ten Average</h4>
-                    <RadialBarChart width={750} height={750} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
-                        <Tooltip/>
-                        <RadialBar minAngle={15} background clockWise={true} dataKey='value' >
-                            <LabelList dataKey="key" fill="#EEE" />
-                        </RadialBar>
-                    </RadialBarChart>
+                <h4 id="avg">Your Average vs. Top Ten Average</h4>
+                <RadialBarChart width={750} height={750} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
+                    <Tooltip/>
+                    <RadialBar minAngle={15} background clockWise={true} dataKey='value' >
+                    <LabelList dataKey="key" fill="#EEE"/>
+                    </RadialBar>
+                </RadialBarChart>
                 </div>
             </div>
         )

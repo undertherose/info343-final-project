@@ -155,7 +155,7 @@ class App extends Component {
                         )} />
                         <Route path="/fift" render={(routerProps) => (
                             this.state.isLoggedIn ? (
-                                <FifteenPuzzle />
+                                <FifteenPuzzle updateScore = {(score, gameName) => this.updateScore(score, gameName)}/>
                             ) : (
                                 <Redirect to="/signin" />
                             )

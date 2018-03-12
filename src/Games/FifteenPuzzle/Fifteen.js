@@ -37,7 +37,7 @@ export class FifteenPuzzle extends Component {
         for (let i = 0; i < squares.length; i++) {
             squares[i].classList.remove("solved");
         }
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 1; i++) {
             let neighbors = this.getNeighbors();
             let randPick = neighbors[(Math.floor(Math.random() * neighbors.length))];
             if (randPick) {
@@ -101,6 +101,7 @@ export class FifteenPuzzle extends Component {
             }
         }
         if (bool && !this.state.disabled) {
+            this.props.updateScore(this.state.moves + 1, "FifteenPuzzle");
             this.setState({
                 won: bool,
                 disabled: true
