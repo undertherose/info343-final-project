@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import {Link} from 'react-router-dom';
 import './Fifteen.css';
 
 
@@ -17,6 +18,10 @@ export class FifteenPuzzle extends Component {
         }
     }
 
+    componentDidMount() {
+        this.props.updateCurrentGame('fifteen');
+    }
+    
     //function that returns x position of tile
     getX(tile) {
         return parseInt(tile.style.left);
@@ -183,6 +188,9 @@ export class FifteenPuzzle extends Component {
                 <button className="btn btn btn-warning" onClick={() => this.shuffle()}>Shuffle</button>
                 <label htmlFor="files" className="btn btn-primary">Change Image</label>
                 <input id="files" type="file" style={{ visibility: "hidden" }} onChange={(e) => this.changePic(e)}></input>
+                <Link to="/comments">
+                    <button className="btn btn-primary"> Leave a comment...</button>
+                </Link>
             </div>
         );
     }
