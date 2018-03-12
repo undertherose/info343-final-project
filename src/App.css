@@ -32,7 +32,11 @@ body, html {
 }
 
 
-
+.reacteroids-comments {
+    position: fixed;
+    left: 0;
+    top: 90px;
+}
 
 .comment-section {
     display: none;
