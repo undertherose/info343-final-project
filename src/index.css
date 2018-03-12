@@ -15,11 +15,25 @@ body {
 }
 
 .recharts-wrapper {
-  margin: -2rem auto auto 5rem;
+  margin: 2rem auto auto 15rem;
+}
+.charts-container {
+  display: flex;
+  flex-wrap: wrap !important;
+  width: 100%;
+  justify-content: center;
 }
 
-.charts, .charts-container {
-  display: flex;
-  
-  width: 100%;
+.flex-item:last-of-type {
+  flex-shrink: 2;
+}
+
+table {
+  width: 250% !important;
+}
+
+#avg {
+  position: relative;
+  left: 12%;
+  top: 12%;
 }

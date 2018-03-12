@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { RadialBarChart, RadialBar, Label, LabelList } from 'recharts';
+import { RadialBarChart, RadialBar, Label, LabelList, Tooltip } from 'recharts';
 import * as d3 from 'd3';
 
 // Component representing the scores page
@@ -92,32 +92,51 @@ class Charts extends Component {
         this.getUserData(radialData);
         return (
             <div className="charts-container">
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Username</th>
-                            <th>Score</th>
-                        </tr>
-                        {
-                            this.state.scoreData.map((d, i) => {
-                                return (
-                                    <tr key={'item-' + i}>
-                                        <td>{i + 1}</td>
-                                        <td>{Object.entries(d)[0][1]}</td>
-                                        <td>{Object.entries(d)[1][1]}</td>
-                                    </tr>
-                                );
-                            })
-                        }
-                    </tbody>
-                </table>
-                <RadialBarChart width={750} height={750} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
-                    <RadialBar minAngle={15} background clockWise={true} dataKey='value' >
-                        <LabelList dataKey="key" fill="#EEE" />
-                    </RadialBar>
-                </RadialBarChart>
+                <div className="flex-item">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Username</th>
+                                <th>Score</th>
+                            </tr>
+                            {
+                                this.state.scoreData.map((d, i) => {
+                                    return (
+                                        <tr key={'item-' + i}>
+                                            <td>{i + 1}</td>
+                                            <td>{Object.entries(d)[0][1]}</td>
+                                            <td>{Object.entries(d)[1][1]}</td>
+                                        </tr>
+                                    );
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div className="flex-item">
+                    <h4 id="avg">Your Average vs. Top Ten Average</h4>
+                    <RadialBarChart width={750} height={750} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
+                        <Tooltip/>
+                        <RadialBar minAngle={15} background clockWise={true} dataKey='value' >
+                            <LabelList dataKey="key" fill="#EEE" />
+                        </RadialBar>
+                    </RadialBarChart>
+                </div>
             </div>
         )
+    }
+}
+
+class TopScores extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: ""
+        }
+    }
+
+    componentDidMount() {
+        let refs = ["SnakeScores", "ReacteroidsScores", "FifteenPuzzleScores"];
     }
 }
