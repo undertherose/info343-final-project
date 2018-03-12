@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  overflow-y: hidden;
 }
 
 .navbar {
@@ -9,4 +10,8 @@ body {
     width: 100%;
     display: inline-block;
     height: 60px;
+}
+
+.recharts-wrapper {
+  margin-left: 10rem;
 }

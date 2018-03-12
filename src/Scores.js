@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import  { RadialBarChart, RadialBar } from 'recharts';
+import  { RadialBarChart, RadialBar, Label, LabelList } from 'recharts';
 import * as d3 from 'd3';
 
 // Component representing the scores page
@@ -43,8 +43,8 @@ export class Scores extends Component {
                     </select>
                 </div>
                 <div className="charts">
-                    {this.state.game === "Snake" && <SnakeScores snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
-                    {this.state.game === "Reacteroids" && <ReacteroidsScores snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
+                    {this.state.game === "Snake" && <Charts name="SnakeScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
+                    {this.state.game === "Reacteroids" && <Charts name="ReacteroidsScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
                 </div>
             </div>
         )
@@ -53,29 +53,43 @@ export class Scores extends Component {
 
 
 // Component representing data for Snake game
-class SnakeScores extends Component {
+class Charts extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            scoreData: []
+            scoreData: [],
+            user: ""
         }
     }
     // On mount, pull from the "scores" table in the database
     componentDidMount() {
-        let ref = firebase.database().ref('SnakeScores');
+        let ref = firebase.database().ref(this.props.name);
         let db = ref.orderByChild("score").limitToLast(10);
         db.on('value', (snapshot => {
             let dat = this.props.snapshotToArray(snapshot);
             this.setState({ scoreData: dat });
         }));
+        let name = firebase.auth().currentUser.displayName;
+        this.setState({user: name});
+    }
+
+    getUserData(array) {
+        array.forEach((d) => {
+            if (d.key === this.state.user) {
+                d.fill = "#E14658";
+            } else {
+                d.fill = "#C0B3A0";
+            }
+        })
     }
 
     render() {
          let radialData = d3.nest()
          .key(function(d) { return d.name;})
-         .rollup(function(v) { return d3.sum(v, function (d) { return d.score;})})
+         .rollup(function(v) { return d3.mean(v, function (d) { return d.score;})})
          .entries(this.state.scoreData);
-         console.log(radialData);     
+         console.log(radialData);  
+         this.getUserData(radialData);   
         return (
             <div className="charts-container">
                 <table>
@@ -98,54 +112,12 @@ class SnakeScores extends Component {
                         }
                     </tbody>
                 </table>
-                <RadialBarChart width={730} height={250} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
-                    <RadialBar minAngle={15} label={{ fill: '#666', position: 'insideStart' }} background clockWise={true} dataKey='uv' />
+                <RadialBarChart width={750} height={750} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
+                    <RadialBar minAngle={15} background clockWise={true} dataKey='value' >
+                    <LabelList dataKey="key" fill="#EEE"/>
+                    </RadialBar>
                 </RadialBarChart>
             </div>
-        )
-    }
-}
-
-// Component representing data for Reacteroids game
-class ReacteroidsScores extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            scoreData: []
-        }
-    }
-    // On mount, pull from the "scores" table in the database
-    componentDidMount() {
-        let ref = firebase.database().ref('ReacteroidsScores');
-        let db = ref.orderByChild("score").limitToLast(10);
-        db.on('value', (snapshot => {
-            let dat = this.props.snapshotToArray(snapshot);
-            this.setState({ scoreData: dat });
-        }));
-    }
-
-    render() {
-        return (
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Username</th>
-                        <th>Score</th>
-                    </tr>
-                    {
-                        this.state.scoreData.map((d, i) => {
-                            return (
-                                <tr key={'item-' + i}>
-                                    <td>{i + 1}</td>
-                                    <td>{Object.entries(d)[0][1]}</td>
-                                    <td>{Object.entries(d)[1][1]}</td>
-                                </tr>
-                            );
-                        })
-                    }
-                </tbody>
-            </table>
         )
     }
 }
