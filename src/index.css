@@ -37,3 +37,9 @@ table {
   left: 12%;
   top: 12%;
 }
+
+@media(max-width:1000px) {
+  .charts {
+    margin-right: 15rem;
+  }
+}
