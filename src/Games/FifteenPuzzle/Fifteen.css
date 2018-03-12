@@ -2,7 +2,7 @@ body {
     text-align: center;
 }
 
-body, button {
+body, .fifteen button {
     font-family: cursive;
     font-size: 14pt;
 }
@@ -44,12 +44,12 @@ body, button {
     font-size: 0px;
 }
 
-label {
+.fifteen label {
     color: black !important;
     margin: 0px auto auto 2rem;
 }
 
-button {
+.fifteen button {
     margin-left: 20%;
 }
 

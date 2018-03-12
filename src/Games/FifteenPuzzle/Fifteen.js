@@ -174,7 +174,7 @@ export class FifteenPuzzle extends Component {
     //renders puzzle
     render() {
         return (
-            <div>
+            <div class="fifteen">
                 <div id="puzzlearea">{
                     this.makeSquares()
                 }
