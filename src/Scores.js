@@ -112,12 +112,6 @@ class Charts extends Component {
          .rollup(function(v) { return d3.mean(v, function (d) { return d.score;})})
          .entries(userScores);
          this.getUserData(radialData);   
-
-        console.log(this.state.scoreData);
-
-
-        
-
         return (
             <div className="charts-container">
                 <div className="flex-item">
@@ -145,7 +139,7 @@ class Charts extends Component {
                 <div className="flex-item">
                 <h4 id="avg">Your Average vs. Top Ten Average</h4>
                 <RadialBarChart width={750} height={750} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
-                    <Tooltip/>
+                    <Tooltip content={<CustomTooltip data={radialData}/>} />
                     <RadialBar minAngle={15} background clockWise={true} dataKey='value' >
                     <LabelList dataKey="key" fill="#EEE"/>
                     </RadialBar>
@@ -166,5 +160,26 @@ class TopScores extends Component {
 
     componentDidMount() {
         let refs = ["SnakeScores", "ReacteroidsScores", "FifteenPuzzleScores"];
+    }
+}
+
+
+class CustomTooltip extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        let object = this.props.data[this.props.label];
+        if (object) {
+            return (
+            <div className="custom-tooltip">
+                <p>{"Average Score: " + Math.round(object.value) + " points"}</p>
+                <p>{}</p>
+            </div>
+            );
+        } else {
+            return null;
+        }
     }
 }
