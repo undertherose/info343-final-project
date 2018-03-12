@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import './index.css';
 
 //class that handles the commment section of each recipe page
-class CommentSection extends Component {
+export class CommentSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,7 +15,7 @@ class CommentSection extends Component {
     //gets comments from firebase that reference this recipe specifically
     componentDidMount() {
         //------------NEED TO CHANGE THIS-------------//
-        this.requestRef = firebase.database().ref('recipes/' + this.props.recipeRef + "/comments");
+        this.requestRef = firebase.database().ref('comments/' + this.props.game);
         this.requestRef.on('value', (snapshot) => {
             let comments = snapshot.val();
             this.setState({ comments: comments });
@@ -44,7 +45,7 @@ class CommentSection extends Component {
     //renders comments to display
     render() {
         return (
-            <div>
+            <div className="game-comments">
                 <Comments comments={this.state.comments} />
                 <div className="form-group">
                     <textarea className="form-control"
