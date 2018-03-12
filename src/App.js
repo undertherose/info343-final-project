@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {SnakeGame} from './SnakeGame';
 import {SignIn} from './SignIn';
 import {SignUp} from './SignUp';
 import {Chat} from './Chat';
@@ -8,10 +7,12 @@ import {UserAccount} from './UserAccount';
 import { HashRouter as Router, Route, NavLink, Redirect} from "react-router-dom";
 import './App.css';
 import firebase from 'firebase';
+import {SnakeGame} from './Games/SnakeGame/SnakeGame.js';
 import {Reacteroids} from './Games/Reacteroids-master/src/Reacteroids.js';
 import {FifteenPuzzle} from './Games/FifteenPuzzle/Fifteen.js';
 
 class App extends Component {
+    //<Chat {...routerProps} name={this.state.user.displayName} />
     constructor(props){
         super(props);
 
@@ -88,15 +89,17 @@ class App extends Component {
 
     // Update the score in the firebase database with the name and the score value
     updateScore(score, gameName) {
-        this.setState({score: score});
-        let entry = {};
-        entry['name'] = this.state.user.displayName;
-        entry['score'] = score;
-        let ref = firebase.database().ref(gameName + 'Scores');
-        let allRef = firebase.database().ref('AllScores');
-        ref.push(entry);
-        entry['gameName'] = gameName;
-        allRef.push(entry);
+        if (this.state.user) {
+            this.setState({score: score});
+            let entry = {};
+            entry['name'] = this.state.user.displayName;
+            entry['score'] = score;
+            let ref = firebase.database().ref(gameName + 'Scores');
+            let allRef = firebase.database().ref('AllScores');
+            ref.push(entry);
+            entry['gameName'] = gameName;
+            allRef.push(entry);
+        }
     }
 
     // Intended as a prop for components
@@ -116,7 +119,7 @@ class App extends Component {
                     <div className="sub-container">
                         <nav>
                             <ul>
-                                <li className="title"><h2>TITLE</h2></li>
+                                <li className="title"><h2>Arcode</h2></li>
                                 <li><NavLink to="/home">Home</NavLink></li>
                                 <li><NavLink to="/games">Games</NavLink></li>
                                 <li><NavLink to="/play">Snake</NavLink></li>
@@ -125,7 +128,7 @@ class App extends Component {
                                 <li><NavLink to="/fift">Fifteen Puzzle</NavLink></li>
                                 <li className="signout-btn float-right">
                                     {
-                                    this.state.isLoggedIn &&
+                                    this.state.isLoggedIn && this.state.user &&
                                     <button className="signout-btn btn btn-warning" onClick={() => this.handleSignOut()}>
                                         Sign Out
                                     </button>
@@ -168,12 +171,9 @@ class App extends Component {
                         )} />
                         <Route path="/play" render={(routerProps) => (
                             this.state.isLoggedIn && this.state.user ? (
-                                <div>
-                                <Chat {...routerProps} name={this.state.user.displayName} />
                                 <SnakeGame {...routerProps} updateScore = {(score, gameName) => this.updateScore(score, gameName)} />
-                                </div>
                             ) : (
-                                <SignIn {...routerProps} handleSignIn={this.handleSignIn} handleSignUp={this.handleSignUp} error={this.state.errorMessage}/>
+                                <Redirect to="/signin" />
                             )
                         )} />
                         <Route path="/signup" render={(routerProps) => (
@@ -187,7 +187,7 @@ class App extends Component {
                             this.state.isLoggedIn ? (
                                 <Scores {...routerProps} />
                             ) : (
-                                <SignIn {...routerProps} handleSignIn={this.handleSignIn} handleSignUp={this.handleSignUp}/>
+                                <Redirect to="/signin" />
                             )
                         )} />
                         <Route path="/signin" render={(routerProps) => (

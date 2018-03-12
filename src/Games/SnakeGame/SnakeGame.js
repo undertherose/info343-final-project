@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './SnakeGame.css';
 
 // Component representing the Snake game
 // NOTE: This was written primarily myself, initially based off my Project 2: Art, and then
@@ -26,9 +26,8 @@ export class SnakeGame extends Component {
         if (window.innerWidth < 768) {
             this.boardWidth = Math.floor(window.innerWidth);
         } else {
-            this.boardWidth = Math.floor(window.innerWidth / 2);
+            this.boardWidth = Math.floor(window.innerWidth);
         }
-
         // Starting movement speed (lower is faster)
         this.defaultSpeed = 80;
 
