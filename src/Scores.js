@@ -1,7 +1,10 @@
-
 import React, { Component } from 'react';
 import firebase from 'firebase';
+<<<<<<< HEAD
 import  { RadialBarChart, RadialBar, Cell, Tooltip, Legend } from 'recharts';
+=======
+import  { RadialBarChart, RadialBar, Label, LabelList } from 'recharts';
+>>>>>>> 8b83d813b4b627d6aee5cd225e833d59a6bdbf37
 import * as d3 from 'd3';
 
 // Component representing the scores page
@@ -44,9 +47,9 @@ export class Scores extends Component {
                     </select>
                 </div>
                 <div className="charts">
-                    {this.state.game === "Snake" && <SnakeScores snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
-                    {this.state.game === "Reacteroids" && <ReacteroidsScores snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
-                    {this.state.game === "FifteenPuzzle" && <FifteenPuzzleScores snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
+                    {this.state.game === "Snake" && <Charts name="SnakeScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
+                    {this.state.game === "Reacteroids" && <Charts name="ReacteroidsScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
+                    {this.state.game === "Reacteroids" && <Charts name="FifteenPuzzleScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)}/>}
                 </div>
             </div>
         )
@@ -55,32 +58,50 @@ export class Scores extends Component {
 
 
 // Component representing data for Snake game
-class SnakeScores extends Component {
+class Charts extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            scoreData: []
+            scoreData: [],
+            user: ""
         }
     }
     // On mount, pull from the "scores" table in the database
     componentDidMount() {
-        let ref = firebase.database().ref('SnakeScores');
+        let ref = firebase.database().ref(this.props.name);
         let db = ref.orderByChild("score").limitToLast(10);
         db.on('value', (snapshot => {
             let dat = this.props.snapshotToArray(snapshot);
             this.setState({ scoreData: dat });
         }));
+        let name = firebase.auth().currentUser.displayName;
+        this.setState({user: name});
+    }
+
+    getUserData(array) {
+        array.forEach((d) => {
+            if (d.key === this.state.user) {
+                d.fill = "#E14658";
+            } else {
+                d.fill = "#C0B3A0";
+            }
+        })
     }
 
     render() {
          let radialData = d3.nest()
          .key(function(d) { return d.name;})
-         .rollup(function(v) { return d3.sum(v, function (d) { return d.score;})})
+         .rollup(function(v) { return d3.mean(v, function (d) { return d.score;})})
          .entries(this.state.scoreData);
+<<<<<<< HEAD
          console.log(radialData); 
 
          const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
          
+=======
+         console.log(radialData);  
+         this.getUserData(radialData);   
+>>>>>>> 8b83d813b4b627d6aee5cd225e833d59a6bdbf37
         return (
             <div className="charts-container">
                 <table>
@@ -103,6 +124,7 @@ class SnakeScores extends Component {
                         }
                     </tbody>
                 </table>
+<<<<<<< HEAD
                 <RadialBarChart width={730} height={250} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
                     <RadialBar minAngle={15} label={{ fill: '#666', position: 'insideStart' }} background clockWise={true} dataKey='value'>
                         {
@@ -114,10 +136,17 @@ class SnakeScores extends Component {
                     </RadialBar>
                     <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" />
                     <Tooltip />
+=======
+                <RadialBarChart width={750} height={750} innerRadius="10%" outerRadius="80%" data={radialData} startAngle={180} endAngle={0}>
+                    <RadialBar minAngle={15} background clockWise={true} dataKey='value' >
+                    <LabelList dataKey="key" fill="#EEE"/>
+                    </RadialBar>
+>>>>>>> 8b83d813b4b627d6aee5cd225e833d59a6bdbf37
                 </RadialBarChart>
             </div>
         )
     }
+<<<<<<< HEAD
 }
 
 // Component representing data for Reacteroids game
@@ -205,4 +234,6 @@ class FifteenPuzzleScores extends Component {
             </table>
         )
     }
+=======
+>>>>>>> 8b83d813b4b627d6aee5cd225e833d59a6bdbf37
 }
