@@ -38,6 +38,14 @@ table {
   top: 12%;
 }
 
+.custom-tooltip {
+  background-color: azure;
+  padding: 25px 10px 15px 10px;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(49,49,49,.5);
+  border-radius: 2px;
+}
+
 @media(max-width:1000px) {
   .charts {
     margin-right: 15rem;
