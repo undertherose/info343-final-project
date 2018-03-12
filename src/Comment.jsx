@@ -1,3 +1,6 @@
+import React, { Component } from 'react';
+import './index.css';
+
 //class that handles the commment section of each recipe page
 class CommentSection extends Component {
     constructor(props) {
