@@ -6,10 +6,24 @@ import {Chat} from './Chat';
 import {Scores} from './Scores';
 import {UserAccount} from './UserAccount';
 import { HashRouter as Router, Route, NavLink, Redirect} from "react-router-dom";
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem } from 'reactstrap';
 import './App.css';
 import firebase from 'firebase';
+import 'bootstrap/dist/css/bootstrap.css';
 import {Reacteroids} from './Games/Reacteroids-master/src/Reacteroids.js';
 import {FifteenPuzzle} from './Games/FifteenPuzzle/Fifteen.js';
+import { Homepage } from './Homepage';
+import BackgroundImage from 'react-background-image-loader';
 
 class App extends Component {
     constructor(props){
@@ -106,17 +120,24 @@ class App extends Component {
         }
         return (
             <div className="container">
+            <BackgroundImage src={ "https://cdn.dribbble.com/users/973926/screenshots/2547324/attachments/503859/tubik_studio_page_404_hd.png"} >
+                <div className="something-else">
+                    Some more markup
+                </div>
+        
+            </BackgroundImage>
+            
                 <Router>
                     <div className="sub-container">
                         <nav>
+                            <li className="title"><h2>Arcode</h2></li>
                             <ul>
-                                <li className="title"><h2>TITLE</h2></li>
-                                <li><NavLink to="/home">Home</NavLink></li>
-                                <li><NavLink to="/games">Games</NavLink></li>
-                                <li><NavLink to="/play">Snake</NavLink></li>
-                                <li><NavLink to="/scores">Scores</NavLink></li>
-                                <li><NavLink to="/test">Reacteroids</NavLink></li>
-                                <li><NavLink to="/fift">Fifteen Puzzle</NavLink></li>
+                                <li className="link"><NavLink to="/home">Home</NavLink></li>
+                                <li className="link"><NavLink to="/games">Games</NavLink></li>
+                                <li className="link"><NavLink to="/play">Snake</NavLink></li>
+                                <li className="link"><NavLink to="/scores">Scores</NavLink></li>
+                                <li className="link"><NavLink to="/test">Reacteroids</NavLink></li>
+                                <li className="link"><NavLink to="/fift">Fifteen Puzzle</NavLink></li>
                                 <li className="signout-btn float-right">
                                     {
                                     this.state.isLoggedIn &&
@@ -139,6 +160,7 @@ class App extends Component {
                                 
                             </ul>
                         </nav>
+                        <Route path="/home" component={ Homepage } />
                         <Route path="/acc" render={(routerProps) => (
                             this.state.isLoggedIn ? (
                                 <UserAccount {...routerProps} signoff={()=>this.handleSignOut()} isLoggedOut={() => this.isLoggedOut()} />
