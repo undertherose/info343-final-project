@@ -16,6 +16,7 @@ body {
   margin: 2rem auto auto 15rem;
 }
 .charts-container {
+  text-align: center;
   display: flex;
   flex-wrap: wrap !important;
   width: 100%;
