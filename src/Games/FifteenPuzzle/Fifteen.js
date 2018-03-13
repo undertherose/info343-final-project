@@ -127,8 +127,8 @@ export class FifteenPuzzle extends Component {
                 e.target.style.left = this.state.xCord + "px";
                 e.target.style.top = this.state.yCord + "px";
                 this.setState({
-                    xCord: x,
-                    yCord: y,
+                    xCord: this.state.xCord = x,
+                    yCord: this.state.yCord = y,
                     moves: this.state.moves + 1
                 })
                 if (!this.state.disabled) {
