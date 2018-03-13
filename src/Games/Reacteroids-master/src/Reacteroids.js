@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Ship from './Ship';
 import Asteroid from './Asteroid';
-import { randomNumBetweenExcluding } from './helpers'
+import { randomNumBetweenExcluding } from './helpers';
+import {Link} from 'react-router-dom';
 import './style.css';
 
 const KEY = {
@@ -64,6 +65,7 @@ export class Reacteroids extends Component {
   }
 
   componentDidMount() {
+    this.props.updateCurrentGame('reacteroids');
     window.addEventListener('keyup',   this.handleKeys.bind(this, false));
     window.addEventListener('keydown', this.handleKeys.bind(this, true));
     window.addEventListener('resize',  this.handleResize.bind(this, false));
@@ -246,6 +248,7 @@ export class Reacteroids extends Component {
     }
 
     return (
+        <div>
       <div className="reacteroids">
         { endgame }
         <span className="score current-score" >Score: {this.state.currentScore}</span>
@@ -259,6 +262,10 @@ export class Reacteroids extends Component {
           height={this.state.screen.height * this.state.screen.ratio}
         />
       </div>
+              <Link to="/comments">
+              <button className="btn btn-primary reacteroids-comments"> Leave a comment...</button>
+          </Link>
+          </div>
     );
   }
 }

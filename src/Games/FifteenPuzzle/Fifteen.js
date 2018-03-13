@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import {Link} from 'react-router-dom';
 import './Fifteen.css';
 
 
@@ -17,6 +18,10 @@ export class FifteenPuzzle extends Component {
         }
     }
 
+    componentDidMount() {
+        this.props.updateCurrentGame('fifteen');
+    }
+    
     //function that returns x position of tile
     getX(tile) {
         return parseInt(tile.style.left);
@@ -37,7 +42,7 @@ export class FifteenPuzzle extends Component {
         for (let i = 0; i < squares.length; i++) {
             squares[i].classList.remove("solved");
         }
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 1000; i++) {
             let neighbors = this.getNeighbors();
             let randPick = neighbors[(Math.floor(Math.random() * neighbors.length))];
             if (randPick) {
@@ -174,15 +179,18 @@ export class FifteenPuzzle extends Component {
     //renders puzzle
     render() {
         return (
-            <div>
+            <div class="fifteen">
                 <div id="puzzlearea">{
                     this.makeSquares()
                 }
                 </div>
-                {this.state.won && <div className="won">{"YOU WON IN " + (this.state.disabled && this.state.moves) + " MOVES!!!"}</div>}
+                {this.state.won && <div className="won">{"YOU WON IN " + (this.state.disabled && this.state.moves) + " MOVE(S)!!!"}</div>}
                 <button className="btn btn btn-warning" onClick={() => this.shuffle()}>Shuffle</button>
                 <label htmlFor="files" className="btn btn-primary">Change Image</label>
                 <input id="files" type="file" style={{ visibility: "hidden" }} onChange={(e) => this.changePic(e)}></input>
+                <Link to="/comments">
+                    <button className="btn btn-primary"> Leave a comment...</button>
+                </Link>
             </div>
         );
     }

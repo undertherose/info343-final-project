@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import {Link} from "react-router-dom";
+import './SnakeGame.css';
 
 // Component representing the Snake game
 // NOTE: This was written primarily myself, initially based off my Project 2: Art, and then
@@ -16,7 +17,7 @@ export class SnakeGame extends Component {
         // https://stackoverflow.com/questions/8916620/disable-arrow-key-scrolling-in-users-browser
         window.addEventListener("keydown", function(e) {
             // space and arrow keys
-            if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+            if([37, 38, 39, 40].indexOf(e.keyCode) > -1) {
                 e.preventDefault();
             }
         }, false);
@@ -26,9 +27,8 @@ export class SnakeGame extends Component {
         if (window.innerWidth < 768) {
             this.boardWidth = Math.floor(window.innerWidth);
         } else {
-            this.boardWidth = Math.floor(window.innerWidth / 2);
+            this.boardWidth = Math.floor(window.innerWidth);
         }
-
         // Starting movement speed (lower is faster)
         this.defaultSpeed = 80;
 
@@ -51,6 +51,10 @@ export class SnakeGame extends Component {
         };
     }
 
+    componentDidMount() {
+        this.props.updateCurrentGame('snake');
+    }
+    
     // Handle key presses
     logKey(e){
         if (this.state.keypress && !this.state.gameOver){
@@ -273,6 +277,11 @@ export class SnakeGame extends Component {
                     <p>Press <strong>ENTER</strong> to start playing! Use the <strong>ARROW</strong> keys to move.</p>
                     <p>Make sure to click anywhere on the board to toggle it active!</p>
                 </div>
+            }
+            {(!this.state.isGameStarted || this.state.gameOver) &&
+                <Link to="/comments">
+                    <button className="btn btn-primary"> Leave a comment...</button>
+                </Link>
             }
             </div>
         );

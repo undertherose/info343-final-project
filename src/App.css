@@ -31,6 +31,16 @@ body, html {
     color: #E14658;
 }
 
+<<<<<<< HEAD
+=======
+
+.reacteroids-comments {
+    position: fixed;
+    left: 0;
+    top: 90px;
+}
+
+>>>>>>> 60de450b47e8f82dcdd62d1061180de78b731491
 .comment-section {
     display: none;
 }
@@ -116,9 +126,8 @@ nav li a:hover:not(.active) {
 
 .snake-app {
     position: fixed;
-    left: 0;
-    width: 100%;
     text-align: center;
+    left: 0px;
     background-color: lightblue;
     align-content: center;
     display: block;
@@ -171,7 +180,7 @@ th {
     background-color: #4CAF50;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 400px) {
     * {
         font-size: 1rem;
     }
@@ -216,10 +225,6 @@ th {
     .signout-btn {
         margin-top: 5px;
         margin-right: 5px;
-    }
-
-    .snake-app {
-        left: 100px
     }
 
     table {

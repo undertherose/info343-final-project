@@ -1,5 +1,3 @@
-
-
 body {
   margin: 0;
   padding: 0;
@@ -28,6 +26,10 @@ body {
   flex-shrink: 2;
 }
 
+.game-comments .form-group {
+    margin-top: 70px;
+}
+
 table {
   width: 250% !important;
 }
@@ -44,6 +46,41 @@ table {
   text-align: center;
   box-shadow: 2px 2px 8px rgba(49,49,49,.5);
   border-radius: 2px;
+}
+
+div.box {
+  border: 1px solid black;
+  margin: 1rem 15vw;
+  border-radius: 4px;
+  width: 70%;
+  float: left;
+  padding: 10px;
+  background-color: rgb(252, 247, 247);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+h3.box {
+  font-size: 20pt;
+}
+
+h4.box {
+  font-size: 12pt;
+  margin-bottom: 1rem;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+
+p.box {
+  word-wrap: break-word;
+}
+
+button#comment {
+  margin: 0.5rem 15vw;
+}
+
+.form-group>textarea.form-control {
+  width: 70%;
+  margin: 0 auto;
 }
 
 @media(max-width:1000px) {
