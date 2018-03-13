@@ -184,7 +184,7 @@ export class FifteenPuzzle extends Component {
                     this.makeSquares()
                 }
                 </div>
-                {this.state.won && <div className="won">{"YOU WON IN " + (this.state.disabled && this.state.moves) + " MOVES!!!"}</div>}
+                {this.state.won && <div className="won">{"YOU WON IN " + (this.state.disabled && this.state.moves) + " MOVE(S)!!!"}</div>}
                 <button className="btn btn btn-warning" onClick={() => this.shuffle()}>Shuffle</button>
                 <label htmlFor="files" className="btn btn-primary">Change Image</label>
                 <input id="files" type="file" style={{ visibility: "hidden" }} onChange={(e) => this.changePic(e)}></input>
