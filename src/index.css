@@ -80,7 +80,8 @@ p.box {
 }
 
 button#comment {
-  margin: 0.5rem 15vw;
+  margin-top: 0.5rem;
+  margin-left: 15vw;
 }
 
 .form-group>textarea.form-control {

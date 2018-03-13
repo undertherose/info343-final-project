@@ -12,11 +12,8 @@ import {Reacteroids} from './Games/Reacteroids-master/src/Reacteroids.js';
 import {FifteenPuzzle} from './Games/FifteenPuzzle/Fifteen.js';
 
 class App extends Component {
-    //<Chat {...routerProps} name={this.state.user.displayName} />
     constructor(props){
         super(props);
-
-        
 
         this.handleSignIn = this.handleSignIn.bind(this);
         this.handleSignUp = this.handleSignUp.bind(this);
@@ -103,14 +100,16 @@ class App extends Component {
         }
     }
 
-    // Intended as a prop for components
+    // Intended as a prop for components to know when a user is logged out
     isLoggedOut() {
         this.setState({isLoggedIn: false});
     }
-
+    
+    // Intended as a prop for components to keep track of the current game being played
     updateCurrentGame(game) {
         this.setState({currentGame: game});
     }
+    
     render() {
         let accountStyles = {};
         if (this.state.user && this.state.user.photoURL) {
@@ -173,8 +172,6 @@ class App extends Component {
                                 <Redirect to="/signin" />
                             )
                         )} />
-                        {//should change this to be consistent
-                        }
                         <Route path="/snake" render={(routerProps) => (
                             this.state.isLoggedIn && this.state.user ? (
                                 <SnakeGame {...routerProps} updateCurrentGame = {(e) => this.updateCurrentGame(e)} updateScore = {(score, gameName) => this.updateScore(score, gameName)} />      
@@ -217,7 +214,6 @@ class App extends Component {
                                 <Redirect to="/signin" />
                             )
                         )} />
-                        
                     </div>
                 </Router>
                 {this.state.errorMessage &&
