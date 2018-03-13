@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { HashRouter as Router, Link} from "react-router-dom";
 import firebase from 'firebase';
 import './index.css';
 
@@ -43,8 +44,12 @@ export class CommentSection extends Component {
 
     //renders comments to display
     render() {
+        let linkPath = '/' + this.props.game;
+        let gameTitle = this.props.game.charAt(0).toUpperCase() + this.props.game.slice(1);
+        //console.log(linkPath);
         return (
             <div className="game-comments">
+            <h2>{gameTitle}</h2>
                 <Comments comments={this.state.comments} />
                 <div className="form-group">
                     <textarea className="form-control"
@@ -54,6 +59,11 @@ export class CommentSection extends Component {
                     />
                 </div>
                 <button id="comment" className="btn btn-primary" onClick={() => this.addComment()}>Comment</button>
+                <Router>
+                    <Link to={linkPath}>
+                    <button className="btn btn-info"> Return to {gameTitle}</button>
+                    </Link>
+                </Router>
             </div>
         );
     }

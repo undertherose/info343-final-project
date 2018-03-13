@@ -193,11 +193,6 @@ th {
     .auth, form, .snake-app, table {
         margin-top: 100px;
     }
-
-    .comment-section {
-        display: initial;
-        float: right;
-    }
     
     .gameOver{
         font-size: 7em;

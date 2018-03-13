@@ -52,7 +52,7 @@ export class SignUp extends Component {
                 </div>
 
                 <div className="form-group col-md-4 mx-auto">
-                    <Link to="/play">
+                    <Link to="/home">
                     <button className="btn btn-primary mr-2 float-left" onClick={() => this.props.handleSignUp(this.state.email, this.state.password, this.state.username)}>
                         Sign Up
                      </button>

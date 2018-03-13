@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
 import {Link} from 'react-router-dom';
 import './Fifteen.css';
 
@@ -24,12 +23,12 @@ export class FifteenPuzzle extends Component {
     
     //function that returns x position of tile
     getX(tile) {
-        return parseInt(tile.style.left);
+        return parseInt(tile.style.left, 10);
     }
 
     //function that returns y position of tile
     getY(tile) {
-        return parseInt(tile.style.top);
+        return parseInt(tile.style.top, 10);
     }
 
     //function that shuffles the board 
@@ -54,11 +53,11 @@ export class FifteenPuzzle extends Component {
 
     //function that determines if tile is able to move using x and y position. Returns boolean
     canMove(x, y) {
-        if ((y == this.state.yCord - this.state.size || y == this.state.yCord + this.state.size)
-            && x == this.state.xCord) {
+        if ((y === this.state.yCord - this.state.size || y === this.state.yCord + this.state.size)
+            && x === this.state.xCord) {
             return true;
-        } else if ((x == this.state.xCord - this.state.size || x == this.state.xCord + this.state.size)
-            && y == this.state.yCord) {
+        } else if ((x === this.state.xCord - this.state.size || x === this.state.xCord + this.state.size)
+            && y === this.state.yCord) {
             return true;
         }
         return false;
