@@ -127,9 +127,9 @@ class App extends Component {
                                 <li className="title"><h2>Arcode</h2></li>
                                 <li><NavLink to="/home">Home</NavLink></li>
                                 <li><NavLink to="/games">Games</NavLink></li>
-                                <li><NavLink to="/play">Snake</NavLink></li>
-                                <li><NavLink to="/test">Reacteroids</NavLink></li>
-                                <li><NavLink to="/fift">Fifteen Puzzle</NavLink></li>
+                                <li><NavLink to="/snake">Snake</NavLink></li>
+                                <li><NavLink to="/reacteroids">Reacteroids</NavLink></li>
+                                <li><NavLink to="/fifteen">Fifteen Puzzle</NavLink></li>
                                 <li><NavLink to="/scores">Scores</NavLink></li>
                                 <li className="signout-btn float-right">
                                     {
@@ -160,14 +160,14 @@ class App extends Component {
                                 <Redirect to="/signin" />
                             )
                         )} />
-                        <Route path="/test" render={(routerProps) => (
+                        <Route path="/reacteroids" render={(routerProps) => (
                             this.state.isLoggedIn ? (
                                 <Reacteroids updateCurrentGame = {(e) => this.updateCurrentGame(e)} updateScore = {(score, gameName) => this.updateScore(score, gameName)}/>
                             ) : (
                                 <Redirect to="/signin" />
                             )
                         )} />
-                        <Route path="/fift" render={(routerProps) => (
+                        <Route path="/fifteen" render={(routerProps) => (
                             this.state.isLoggedIn ? (
                                 <FifteenPuzzle updateCurrentGame = {(e) => this.updateCurrentGame(e)} updateScore = {(score, gameName) => this.updateScore(score, gameName)}/>
                             ) : (
@@ -176,7 +176,7 @@ class App extends Component {
                         )} />
                         {//should change this to be consistent
                         }
-                        <Route path="/play" render={(routerProps) => (
+                        <Route path="/snake" render={(routerProps) => (
                             this.state.isLoggedIn && this.state.user ? (
                                 <SnakeGame {...routerProps} updateCurrentGame = {(e) => this.updateCurrentGame(e)} updateScore = {(score, gameName) => this.updateScore(score, gameName)} />      
                             ) : (
