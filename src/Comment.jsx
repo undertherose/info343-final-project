@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { HashRouter as Router, Route, NavLink, Redirect, Link} from "react-router-dom";
 import firebase from 'firebase';
 import './index.css';
 
@@ -43,6 +44,8 @@ export class CommentSection extends Component {
 
     //renders comments to display
     render() {
+        let linkPath = '/' + this.props.game;
+        console.log(linkPath);
         return (
             <div className="game-comments">
                 <Comments comments={this.state.comments} />
@@ -54,6 +57,11 @@ export class CommentSection extends Component {
                     />
                 </div>
                 <button id="comment" className="btn btn-primary" onClick={() => this.addComment()}>Comment</button>
+                <Router>
+                    <Link to={linkPath}>
+                    <button className="btn btn-info"> Return to {this.props.game.charAt(0).toUpperCase() + this.props.game.slice(1)}</button>
+                    </Link>
+                </Router>
             </div>
         );
     }
