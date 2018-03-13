@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, NavLink, Redirect, Link} from "react-router-dom";
+import { HashRouter as Router, Link} from "react-router-dom";
 import firebase from 'firebase';
 import './index.css';
 

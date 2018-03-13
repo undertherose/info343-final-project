@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {SignIn} from './SignIn';
 import {SignUp} from './SignUp';
-import {Chat} from './Chat';
 import {Scores} from './Scores';
 import {UserAccount} from './UserAccount';
 import {CommentSection} from './Comment.jsx';
@@ -213,7 +212,7 @@ class App extends Component {
                         )} />
                         <Route exact path="/" render={(routerProps) => (
                             this.state.isLoggedIn ? (
-                                <SnakeGame {...routerProps} updateScore = {(score) => this.updateScore(score)} />
+                                <Redirect to="/home" />
                             ) : (
                                 <Redirect to="/signin" />
                             )
