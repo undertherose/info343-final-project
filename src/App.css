@@ -31,16 +31,12 @@ body, html {
     color: #E14658;
 }
 
-<<<<<<< HEAD
-=======
-
 .reacteroids-comments {
     position: fixed;
     left: 0;
     top: 90px;
 }
 
->>>>>>> 60de450b47e8f82dcdd62d1061180de78b731491
 .comment-section {
     display: none;
 }
