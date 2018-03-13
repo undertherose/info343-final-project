@@ -47,14 +47,14 @@ export class Scores extends Component {
                         <option value="Snake" className="dropdown-item" >Snake</option>
                         <option value="Reacteroids" className="dropdown-item">Reacteroids</option>
                         <option value="FifteenPuzzle" className="dropdown-item">Fifteen Puzzle</option>
-                        <option value="All" className="dropdown-item">All</option>
+                        {/* <option value="All" className="dropdown-item">All</option> */}
                     </select>
                 </div>
                 <div className="charts">
                     {this.state.game === "Snake" && <Charts name="SnakeScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)} />}
                     {this.state.game === "Reacteroids" && <Charts name="ReacteroidsScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)} />}
                     {this.state.game === "FifteenPuzzle" && <Charts name="FifteenPuzzleScores" snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)} />}
-                    {this.state.game === "All" && <TopScores snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)} />}
+                    {/* {this.state.game === "All" && <TopScores snapshotToArray={(snapshot) => this.snapshotToArray(snapshot)} />} */}
                 </div>
             </div>
         )
@@ -180,78 +180,79 @@ class Charts extends Component {
     }
 }
 
-class TopScores extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: ""
-        }
-    }
+//MAY USE LATER, DONT KNOW YET
+// class TopScores extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             data: ""
+//         }
+//     }
 
-    componentWillMount() {
-        let ref = firebase.database().ref("AllScores");
+//     componentWillMount() {
+//         let ref = firebase.database().ref("AllScores");
 
-        let name = firebase.auth().currentUser.displayName;
-        let scores = ref.orderByChild("name");
-        scores.on('value', (snapshot => {
-            let dat = this.props.snapshotToArray(snapshot);
-            this.setState({ data: dat, user: name });
-        }));
-    }
+//         let name = firebase.auth().currentUser.displayName;
+//         let scores = ref.orderByChild("name");
+//         scores.on('value', (snapshot => {
+//             let dat = this.props.snapshotToArray(snapshot);
+//             this.setState({ data: dat, user: name });
+//         }));
+//     }
 
-    getUserArray(name, array) {
-        let arr = [];
-        array.forEach((d) => {
-            if (d.name === name) {
-                arr.push(d);
-            }
-        })
-        return arr;
-    }
+//     getUserArray(name, array) {
+//         let arr = [];
+//         array.forEach((d) => {
+//             if (d.name === name) {
+//                 arr.push(d);
+//             }
+//         })
+//         return arr;
+//     }
 
-    getGameTopScore(array, game) {
-        let max = 0;
-        array.forEach((d) => {
-            if (d.gameName === game && d.score > max) {
-                max = d.score;
-            }
-        })
-        return max;
-    }
+//     getGameTopScore(array, game) {
+//         let max = 0;
+//         array.forEach((d) => {
+//             if (d.gameName === game && d.score > max) {
+//                 max = d.score;
+//             }
+//         })
+//         return max;
+//     }
 
-    getUserTopScores(array, name) {
-        let games = ["Reacteroids", "Snake", "FifteenPuzzle"];
-        let userArray = this.getUserArray(name, array);
-        games.forEach((d) => {
-            games.push(this.getGameTopScore(userArray, d));
-        })
-        let gameScores = [
-            { game: "Reacteroids", score: games[3] },
-            { game: "Snake", score: games[4] },
-            { game: "FifteenPuzzle", score: games[5] }
-        ];
+//     getUserTopScores(array, name) {
+//         let games = ["Reacteroids", "Snake", "FifteenPuzzle"];
+//         let userArray = this.getUserArray(name, array);
+//         games.forEach((d) => {
+//             games.push(this.getGameTopScore(userArray, d));
+//         })
+//         let gameScores = [
+//             { game: "Reacteroids", score: games[3] },
+//             { game: "Snake", score: games[4] },
+//             { game: "FifteenPuzzle", score: games[5] }
+//         ];
 
-        return gameScores;
-    }
+//         return gameScores;
+//     }
 
-    render() {
-        let data;
-        if (this.state.data) {
-            data = this.getUserTopScores(this.state.data, "Mitch");
+//     render() {
+//         let data;
+//         if (this.state.data) {
+//             data = this.getUserTopScores(this.state.data, "Mitch");
 
-        }
-        return (
-            <RadarChart outerRadius={300} width={650} height={650} data={data}>
-                <PolarGrid />
-                <PolarAngleAxis dataKey="game" />
-                <PolarRadiusAxis angle={30} domain={[0, 150]} />
-                <Radar name="Mitch" dataKey="score" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-                <Legend />
-                <Tooltip />
-            </RadarChart>
-        );
-    }
-}
+//         }
+//         return (
+//             <RadarChart outerRadius={300} width={650} height={650} data={data}>
+//                 <PolarGrid />
+//                 <PolarAngleAxis dataKey="game" />
+//                 <PolarRadiusAxis angle={30} domain={[0, 150]} />
+//                 <Radar name="Mitch" dataKey="score" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+//                 <Legend />
+//                 <Tooltip />
+//             </RadarChart>
+//         );
+//     }
+// }
 
 
 class CustomTooltip extends Component {
