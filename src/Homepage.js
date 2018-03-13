@@ -38,29 +38,6 @@ export class Homepage extends Component {
                 </div>
                 <CardList />
                 <ControlledCarousel />
-                <Carousel>
-                    <Carousel.Item>
-                        <img width={900} height={500} alt="900x500" src="http://abduzeedo.com/themes/abdz/images/placeholder4x3.png" />
-                            <Carousel.Caption>
-                                <h3>First slide label</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img width={900} height={500} alt="900x500" src="https://cdn-images-1.medium.com/max/2000/1*Asobnxejkl99Pde8Td1ajg.png" />
-                        <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img width={900} height={500} alt="900x500" src="http://abduzeedo.com/themes/abdz/images/placeholder16x9.png" />
-                        <Carousel.Caption>
-                            <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                </Carousel>
             </div>
         )
 
@@ -104,14 +81,14 @@ export class ControlledCarousel extends React.Component {
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img width={900} height={500} alt="900x500" src="https://cdn-images-1.medium.com/max/2000/1*Asobnxejkl99Pde8Td1ajg.png" />
+            <img width={900} height={500} alt="900x500" src="https://www.imgonline.com.ua/examples/random-pixels-wallpaper-big.jpg" />
             <Carousel.Caption>
               <h3>Second slide label</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img width={900} height={500} alt="900x500" src="https://cdn-images-1.medium.com/max/2000/1*Asobnxejkl99Pde8Td1ajg.png" />
+            <img width={900} height={500} alt="900x500" src="https://i.kinja-img.com/gawker-media/image/upload/t_original/n8kpb02cniycamlnltma.jpg" />
             <Carousel.Caption>
               <h3>Third slide label</h3>
               <p>
