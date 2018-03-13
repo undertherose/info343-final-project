@@ -27,8 +27,12 @@ body {
   flex-shrink: 2;
 }
 
-.game-comments .form-group {
+.game-comments .form-group, .game-comments h2{
     margin-top: 70px;
+}
+
+.game-comments h2 {
+    color: black;
 }
 
 table {
