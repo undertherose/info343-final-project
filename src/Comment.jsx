@@ -14,7 +14,6 @@ export class CommentSection extends Component {
 
     //gets comments from firebase that reference this recipe specifically
     componentDidMount() {
-        //------------NEED TO CHANGE THIS-------------//
         this.requestRef = firebase.database().ref('comments/' + this.props.game);
         this.requestRef.on('value', (snapshot) => {
             let comments = snapshot.val();

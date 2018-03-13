@@ -179,17 +179,17 @@ export class FifteenPuzzle extends Component {
     //renders puzzle
     render() {
         return (
-            <div class="fifteen">
+            <div className="fifteen">
                 <div id="puzzlearea">{
                     this.makeSquares()
                 }
                 </div>
                 {this.state.won && <div className="won">{"YOU WON IN " + (this.state.disabled && this.state.moves) + " MOVE(S)!!!"}</div>}
                 <button className="btn btn btn-warning" onClick={() => this.shuffle()}>Shuffle</button>
-                <label htmlFor="files" className="btn btn-primary">Change Image</label>
+                <label htmlFor="files" id="changePic" className="btn btn-primary">Change Image</label>
                 <input id="files" type="file" style={{ visibility: "hidden" }} onChange={(e) => this.changePic(e)}></input>
-                <Link to="/comments">
-                    <button className="btn btn-primary"> Leave a comment...</button>
+                <Link className="link" to="/comments">
+                    <button id="comment" className="btn btn-primary"> Leave a comment...</button>
                 </Link>
             </div>
         );

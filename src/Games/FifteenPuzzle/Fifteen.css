@@ -3,8 +3,8 @@ body {
 }
 
 body, .fifteen button {
-    font-family: cursive;
     font-size: 14pt;
+    font-family: 'Roboto', sans-serif;
 }
 
 #puzzlearea {
@@ -61,4 +61,9 @@ body, .fifteen button {
     padding: 60px;
     box-shadow: 2px 2px 8px rgba(49,49,49,.5);
     border-radius: 5px;
+}
+
+button.btn#comment {
+    margin-left: -14%; 
+    color: black;  
 }
