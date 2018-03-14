@@ -85,7 +85,7 @@ class Charts extends Component {
     changeColor(array) {
         array.forEach((d) => {
             if (d.key === this.state.user) {
-                d.fill = "#E14658";
+                d.fill = "#212529";
             } else {
                 d.fill = "#C0B3A0";
             }
