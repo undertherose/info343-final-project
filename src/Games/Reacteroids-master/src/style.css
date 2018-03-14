@@ -27,18 +27,18 @@ canvas {
 .score {
   display: block;
   position: absolute;
-  top: 11vh;
+  top: 25vh;
   z-index: 1;
-  font-size: 20px;
+  font-size: 14px;
 }
 .controls {
   display: block;
   position: absolute;
-  top: 11vh;
+  top: 25vh;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 1;
-  font-size: 11px;
+  font-size: 7px;
   text-align: center;
   line-height: 1.6;
 }
@@ -64,4 +64,10 @@ button{
 button:hover{
   background-color: #ffffff;
   color: #000000;
+}
+
+@media (min-width: 1000px) { 
+    .score, .controls {
+        top: 11vh;
+    }
 }
