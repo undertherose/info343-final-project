@@ -191,6 +191,9 @@ th {
     color: white;
 }
 
+nav li, .title {
+    float: none !important;
+}
 #avg {
     color: white;
 }
@@ -260,6 +263,7 @@ th {
     nav {
         height: 60px;
     }
+
     .link a {
         padding: 16px 16px;
     }
@@ -284,6 +288,10 @@ th {
 
     .snake-app {
         left: 100px
+    }
+
+    nav li, .title {
+        float: left !important;
     }
 
     table {
