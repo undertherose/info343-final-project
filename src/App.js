@@ -123,7 +123,7 @@ class App extends Component {
             <div className="container">
                 <Helmet>
                 <style>{'body { background-image: url(https://preview.ibb.co/jpheYS/background.png); background-repeat: no-repeat; background-size: cover}'}</style>
-            </Helmet>
+                </Helmet>
                 <Router>
                     <div className="sub-container">
                         <nav>
@@ -167,12 +167,12 @@ class App extends Component {
                                         </NavLink>
                                     }
                                 </li>
-                                <li className="link"><NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+                                {/* <li className="link"><NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                                     <MenuItem className="link" eventKey={3.1} >Logged In As</MenuItem>
                                     <MenuItem divider />
                                     <MenuItem className="link" eventKey={3.2} onClick={() => this.handleSignOut()}>Log Out</MenuItem>                        
                                     </NavDropdown>
-                                </li>
+                                </li> */}
                                 
                             </ul>
                         </nav>
@@ -228,7 +228,7 @@ class App extends Component {
                         )} />
                         <Route path="/signin" render={(routerProps) => (
                             this.state.isLoggedIn ? (
-                                <Scores {...routerProps} />
+                                <Redirect to="/home" />
                             ) : (
                                 <SignIn {...routerProps} handleSignIn={this.handleSignIn} handleSignUp={this.handleSignUp}/>
                             )
