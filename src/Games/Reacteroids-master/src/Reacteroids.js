@@ -235,8 +235,8 @@ export class Reacteroids extends Component {
     if(!this.state.inGame){
       endgame = (
         <div className="endgame">
-          <p>Game over, man!</p>
-          <p>{message}</p>
+          <p className="endgame-message">Game over, man!</p>
+          <p className="endgame-message">{message}</p>
           <button
             onClick={ this.startGame.bind(this) }>
             try again?

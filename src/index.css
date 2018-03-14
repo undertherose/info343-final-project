@@ -39,9 +39,14 @@ table {
   width: 250% !important;
 }
 
+.controls {
+  font-size: 10rem;
+}
+
 #avg {
   position: relative;
-  left: 12%;
+  color: #C0B3A0 !important;
+  left: 9%;
   top: 12%;
 }
 
