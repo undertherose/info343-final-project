@@ -152,8 +152,8 @@ class App extends Component {
                                 <li className="signout-btn float-right">
                                     {
                                         this.state.isLoggedIn && this.state.user &&
-                                        <Link to="/signin">
-                                            <button className="signout-btn btn btn-warning" onClick={() => this.handleSignOut()}>
+                                        <Link className="signout2" to="/signin">
+                                            <button className="signout-btn btn-lg btn-warning" onClick={() => this.handleSignOut()}>
                                                 Sign Out
                                         </button>
                                         </Link>
