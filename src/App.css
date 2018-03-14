@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300i,400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300i,400,700|Roboto+Mono:300,400,500,500i,700,700i|Ropa+Sans:400,400i');
 
 * {
     font-size: 0.9rem;
@@ -75,7 +75,6 @@ li {
 }
 
 .navbar {
-    background-color: black;
     width: 100%;
     height: 60px;
     margin: 0 -9999rem;
@@ -90,30 +89,43 @@ nav {
     width: 100%;
     height: 60px;
     z-index: 1;
+    background-color: white;
 }
 
-nav li {
+nav .title {
     float: left;
+    padding-left: 90px;
+    margin-top: 8px;
+    padding-bottom: 8px;    
+}
+
+nav .link {
+    float: right;
 }
 
 nav > ul {
     list-style-type: none;
-    margin: 0;
+    margin-right: 74px;
+    
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: white;
 }
 
 nav li a {
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 18px;
     display: block;
-    color: white;
+    color: #C0B3A0;
     text-align: center;
     padding: 8px 8px;
     text-decoration: none;
 }
 
 nav li a:hover:not(.active) {
-    background-color: #111;
+    text-decoration: none;
+    font-style: italic;
+    color: #C0B3A0;
 }
 
 .signout-btn {
@@ -145,8 +157,19 @@ nav li a:hover:not(.active) {
 }
 
 .title {
+    margin-top: 8px;
+    font-size: 36px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    text-decoration-color: #e14658;
     clear: both;
     float: none;
+}
+
+.title h2 {
+    color: #e14658;
+    background-color: white;
+    margin-top: 3px;
 }
 
 table {
@@ -172,8 +195,21 @@ th {
     color: white;
 }
 
-.active {
-    background-color: #4CAF50;
+.active, .active:hover {
+    text-decoration: none;
+    color: #e14658;
+}
+
+.homepage {
+    margin-top: 120px;
+}
+
+.intro {
+    background-color: #DBD8CC;
+}
+
+.cardlist {
+    margin-top: 50px;
 }
 
 #userScore {

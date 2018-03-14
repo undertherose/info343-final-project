@@ -10,6 +10,8 @@ import firebase from 'firebase';
 import {SnakeGame} from './Games/SnakeGame/SnakeGame.js';
 import {Reacteroids} from './Games/Reacteroids-master/src/Reacteroids.js';
 import {FifteenPuzzle} from './Games/FifteenPuzzle/Fifteen.js';
+import { Homepage } from './Homepage';
+import {Helmet} from "react-helmet";
 
 class App extends Component {
     constructor(props){
@@ -117,18 +119,22 @@ class App extends Component {
             accountStyles["paddingBottom"] = 0;
         }
         return (
-            <div >
+            <div className="container">
+                <Helmet>
+                <style>{'body { background-image: url(https://preview.ibb.co/jpheYS/background.png); background-repeat: no-repeat; background-size: cover}'}</style>
+            </Helmet>
                 <Router>
                     <div className="sub-container">
                         <nav>
+                            <li className="title"><h2>Arcode</h2></li>
                             <ul>
-                                <li className="title"><h2>Arcode</h2></li>
-                                <li><NavLink to="/home">Home</NavLink></li>
-                                <li><NavLink to="/games">Games</NavLink></li>
-                                <li><NavLink to="/snake">Snake</NavLink></li>
-                                <li><NavLink to="/reacteroids">Reacteroids</NavLink></li>
-                                <li><NavLink to="/fifteen">Fifteen Puzzle</NavLink></li>
-                                <li><NavLink to="/scores">Scores</NavLink></li>
+                                
+                                <li className="link"><NavLink to="/home">Home</NavLink></li>
+                                <li className="link"><NavLink to="/games">Games</NavLink></li>
+                                <li className="link"><NavLink to="/snake">Snake</NavLink></li>
+                                <li className="link"><NavLink to="/reacteroids">Reacteroids</NavLink></li>
+                                <li className="link"><NavLink to="/fifteen">Fifteen Puzzle</NavLink></li>
+                                <li className="link"><NavLink to="/scores">Scores</NavLink></li>
                                 <li className="signout-btn float-right">
                                     {
                                     this.state.isLoggedIn && this.state.user &&
@@ -137,7 +143,7 @@ class App extends Component {
                                     </button>
                                     }
                                 </li>
-                                <li className="float-right mr-4">
+                                <li className="link float-right mr-4">
                                     {
                                         this.state.isLoggedIn && this.state.user &&
                                         <NavLink style={accountStyles} to="/acc">
@@ -151,6 +157,7 @@ class App extends Component {
                                 
                             </ul>
                         </nav>
+                        <Route path="/home" component={ Homepage } />
                         <Route path="/acc" render={(routerProps) => (
                             this.state.isLoggedIn ? (
                                 <UserAccount {...routerProps} signoff={()=>this.handleSignOut()} isLoggedOut={() => this.isLoggedOut()} />
