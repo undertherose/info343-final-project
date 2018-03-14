@@ -24,6 +24,8 @@ import {Reacteroids} from './Games/Reacteroids-master/src/Reacteroids.js';
 import {FifteenPuzzle} from './Games/FifteenPuzzle/Fifteen.js';
 import { Homepage } from './Homepage';
 import BackgroundImage from 'react-background-image-loader';
+import {Helmet} from "react-helmet";
+import background from "./imgs/background.png";
 
 class App extends Component {
     constructor(props){
@@ -120,13 +122,9 @@ class App extends Component {
         }
         return (
             <div className="container">
-            <BackgroundImage src={ "https://cdn.dribbble.com/users/973926/screenshots/2547324/attachments/503859/tubik_studio_page_404_hd.png"} >
-                <div className="something-else">
-                    Some more markup
-                </div>
-        
-            </BackgroundImage>
-            
+            <Helmet>
+                <style>{'body { background-image: url(https://preview.ibb.co/jpheYS/background.png); background-repeat: no-repeat; background-size: cover}'}</style>
+            </Helmet>
                 <Router>
                     <div className="sub-container">
                         <nav>
