@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Carousel, CarouselItem, CarouselCaption } from 'react-bootstrap';
+import { Carousel, CarouselItem } from 'react-bootstrap';
 import background from "./imgs/background.png";
+import slide01 from "./imgs/slide01.png";
+import slide02 from "./imgs/slide02.png";
+import slide03 from "./imgs/slide03.png";
+import snake from "./imgs/snake.png";
+import fifteenpuzzle from "./imgs/fifteenpuzzle.png";
+import reacteroids from "./imgs/reacteroids.png";
 
 
 export class Homepage extends Component {
@@ -55,27 +61,13 @@ export class ControlledCarousel extends React.Component {
           onSelect={this.handleSelect}
         >
           <Carousel.Item>
-            <img width={900} height={500} alt="900x500" src="https://cdn-images-1.medium.com/max/2000/1*Asobnxejkl99Pde8Td1ajg.png" />
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
+            <img width={900} height={500} alt="900x500" src={ slide01 } />
           </Carousel.Item>
           <Carousel.Item>
-            <img width={900} height={500} alt="900x500" src="https://www.imgonline.com.ua/examples/random-pixels-wallpaper-big.jpg" />
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
+            <img width={900} height={500} alt="900x500" src={ slide02 } />
           </Carousel.Item>
           <Carousel.Item>
-            <img width={900} height={500} alt="900x500" src="https://i.kinja-img.com/gawker-media/image/upload/t_original/n8kpb02cniycamlnltma.jpg" />
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
+            <img width={900} height={500} alt="900x500" src={ slide03 } />
           </Carousel.Item>
         </Carousel>
       );
@@ -121,9 +113,9 @@ export class CardList extends Component{
 
 
     render() {
-        let games = [{title: "Reacteroids", img: "", text: "..."},
-        {title: "Snake", img: "", text: "..."},
-        {title: "Fifteen Puzzle", img: "", text: "..."}];
+        let games = [{title: "Reacteroids", img: reacteroids, text: "..."},
+        {title: "Snake", img: snake, text: "..."},
+        {title: "Fifteen Puzzle", img: fifteenpuzzle, text: "..."}];
         return (
             <div className="cardlist row">
                 {games.map((d, i) => {

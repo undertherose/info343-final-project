@@ -5,6 +5,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+html, body {
+    min-height: 100%;
+}
+
 .auth, form, .snake-app, table {
     margin-top: 120px;
 }
@@ -27,15 +31,10 @@ body, html {
     padding: 0% 30%;
 }
 
-.userTopScore {
-    color: #E14658;
-}
 
-.reacteroids-comments {
-    position: fixed;
-    left: 0;
-    top: 130px;
-}
+
+
+
 
 .comment-section {
     display: none;
@@ -50,6 +49,8 @@ body, html {
     margin-left: auto;
     margin-right: auto;
 }
+
+
 
 
 .game-info {
@@ -92,17 +93,6 @@ nav {
     background-color: white;
 }
 
-nav .title {
-    float: left;
-    padding-left: 90px;
-    margin-top: 8px;
-    padding-bottom: 8px;    
-}
-
-nav .link {
-    float: right;
-}
-
 nav > ul {
     list-style-type: none;
     margin-right: 74px;
@@ -128,14 +118,32 @@ nav li a:hover:not(.active) {
     color: #C0B3A0;
 }
 
+nav .title {
+    float: left;
+    padding-left: 90px;
+    margin-top: 8px;
+    padding-bottom: 8px;    
+}
+
+nav .link {
+    float: right;
+}
+
+.card-title {
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 30px;
+    color: #3F3250;
+}
+
 .signout-btn {
     margin-right: 5px;
 }
 
 .snake-app {
     position: fixed;
+    left: 0;
+    width: 100%;
     text-align: center;
-    left: 0px;
     background-color: lightblue;
     align-content: center;
     display: block;
@@ -175,6 +183,7 @@ nav li a:hover:not(.active) {
 table {
     border-collapse: collapse;
     width: 90%;
+    background-color: white;
 }
 
 td, th {
@@ -191,11 +200,20 @@ tr:nth-child(even){
 }
 
 th {
-    background-color: #4CAF50;
+    background-color: #3F3250;
     color: white;
 }
 
-.active, .active:hover {
+#avg {
+    color: white;
+}
+
+.active, .active:hover, .active:active {
+    text-decoration: none;
+    color: #e14658;
+}
+
+.link:active {
     text-decoration: none;
     color: #e14658;
 }
@@ -212,11 +230,7 @@ th {
     margin-top: 50px;
 }
 
-#userScore {
-    border: 2px solid #E14658;
-}
-
-@media (min-width: 400px) {
+@media (min-width: 768px) {
     * {
         font-size: 1rem;
     }
@@ -228,6 +242,11 @@ th {
     
     .auth, form, .snake-app, table {
         margin-top: 100px;
+    }
+
+    .comment-section {
+        display: initial;
+        float: right;
     }
     
     .gameOver{
@@ -256,6 +275,10 @@ th {
     .signout-btn {
         margin-top: 5px;
         margin-right: 5px;
+    }
+
+    .snake-app {
+        left: 100px
     }
 
     table {

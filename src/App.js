@@ -5,6 +5,7 @@ import {Scores} from './Scores';
 import {UserAccount} from './UserAccount';
 import {CommentSection} from './Comment.jsx';
 import { HashRouter as Router, Route, NavLink, Redirect} from "react-router-dom";
+import { DropdownButton, NavDropdown, MenuItem } from 'react-bootstrap';
 import './App.css';
 import firebase from 'firebase';
 import {SnakeGame} from './Games/SnakeGame/SnakeGame.js';
@@ -135,6 +136,18 @@ class App extends Component {
                                 <li className="link"><NavLink to="/reacteroids">Reacteroids</NavLink></li>
                                 <li className="link"><NavLink to="/fifteen">Fifteen Puzzle</NavLink></li>
                                 <li className="link"><NavLink to="/scores">Scores</NavLink></li>
+                                <li className="link"><DropdownButton
+                                    bsStyle="primary"
+                                    title="Account"
+                                    key={1}
+                                    id={`dropdown-basic-1`}>
+                                    <MenuItem eventKey="1.1">Action</MenuItem>
+                                    <MenuItem eventKey="1.2">Another action</MenuItem>
+                                    <MenuItem eventKey="1.3" active>Active Item</MenuItem>
+                                    <MenuItem divider />
+                                    <MenuItem eventKey="1.4">Separated link</MenuItem>
+                                    </DropdownButton>
+                                </li>
                                 <li className="signout-btn float-right">
                                     {
                                     this.state.isLoggedIn && this.state.user &&
@@ -153,6 +166,12 @@ class App extends Component {
                                             {this.state.user.displayName}
                                         </NavLink>
                                     }
+                                </li>
+                                <li className="link"><NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+                                    <MenuItem className="link" eventKey={3.1} >Logged In As</MenuItem>
+                                    <MenuItem divider />
+                                    <MenuItem className="link" eventKey={3.2} onClick={() => this.handleSignOut()}>Log Out</MenuItem>                        
+                                    </NavDropdown>
                                 </li>
                                 
                             </ul>
