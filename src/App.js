@@ -14,6 +14,7 @@ import { FifteenPuzzle } from './Games/FifteenPuzzle/Fifteen.js';
 import { Homepage } from './Homepage';
 import { Helmet } from "react-helmet";
 
+//react component that handles application, renders necessary content
 class App extends Component {
     constructor(props) {
         super(props);

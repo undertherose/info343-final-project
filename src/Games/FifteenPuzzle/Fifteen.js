@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import './Fifteen.css';
 
-
+//react component that renders the fifteen puzzle game
 export class FifteenPuzzle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            xCord: 600,
-            yCord: 600,
-            size: 200,
-            rows: 4,
-            moves: 0,
-            disabled: true,
-            won: false
+            xCord: 600, //x coord for empty tile
+            yCord: 600, //y coord for empty tile
+            size: 200, //size of squares
+            rows: 4, //rows/columns
+            moves: 0, //moves made by user
+            disabled: true, //tracks when clicking should be disabled
+            won: false //tracks if user has won
         }
     }
 
+    //sends game data to firebase
     componentDidMount() {
         this.props.updateCurrentGame('fifteen');
     }
