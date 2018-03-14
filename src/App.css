@@ -10,7 +10,7 @@ html, body {
 }
 
 .auth, form, .snake-app, table {
-    margin-top: 120px;
+    margin-top: 150px !important;
 }
 
 body, html {
@@ -37,7 +37,7 @@ ul li:first-of-type {
 .reacteroids-comments {
     position: fixed;
     left: 0;
-    top: 130px;
+    top: 190px;
 }
 .comment-section {
     display: none;
@@ -260,6 +260,11 @@ nav li, .title {
         margin-left: 2rem;
     }
 
+    .reacteroids-comments {
+        position: fixed;
+        left: 0;
+        top: 130px;
+    }
     nav {
         height: 60px;
     }
