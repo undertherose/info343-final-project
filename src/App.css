@@ -246,6 +246,7 @@ nav li, .title {
     NavLink{
         float: right;
     }
+
     .comment-section {
         display: initial;
         float: right;
