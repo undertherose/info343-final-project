@@ -158,6 +158,10 @@ nav .title {
     font-size: 2rem;
 }
 
+.title:hover {
+    color: #3F3250;
+}
+
 .signout-btn {
     position: fixed;
     right: 0;
@@ -204,7 +208,7 @@ nav li, .title {
     left: 4px;
 }
 
-.active, .active:hover, .active:active {
+.active:hover {
     text-decoration: none;
     color: #e14658;
 }
@@ -229,6 +233,14 @@ nav li, .title {
     margin-top: 50px;
 }
 
+.gameLink:hover {
+    text-decoration: none;
+}
+
+.gameLink .card-title:hover {
+    color: #C0B3A0;
+}
+
 @media (min-width: 1000px) {
     * {
         font-size: 1rem;
@@ -243,7 +255,7 @@ nav li, .title {
         margin-top: 100px;
     }
 
-    NavLink{
+    .link NavLink{
         float: right;
     }
     .comment-section {

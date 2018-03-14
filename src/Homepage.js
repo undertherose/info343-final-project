@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Carousel, CarouselItem } from 'react-bootstrap';
-import background from "./imgs/background.png";
+
 import slide01 from "./imgs/slide01.png";
 import slide02 from "./imgs/slide02.png";
 import slide03 from "./imgs/slide03.png";
@@ -95,7 +95,7 @@ export class GameCard extends Component{
     render() {
         return (
             <div className="col-md-6 col-lg-4 d-flex align-items-stretch">
-                <Link to={this.props.info.link}>
+                <Link className="gameLink" to={this.props.info.link} >
                     <div className="card w-100 text-center mb-4">
                         <img className="card-img-top" src={ this.props.info.img } alt="Card image cap"/>
                         <div className="card-body">
