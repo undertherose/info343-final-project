@@ -27,15 +27,18 @@ body, html {
     width: 100%;
 }
 
+ul li:first-of-type {
+    display: none;
+}
 .dropdown {
     padding: 0% 30%;
 }
 
-
-
-
-
-
+.reacteroids-comments {
+    position: fixed;
+    left: 0;
+    top: 130px;
+}
 .comment-section {
     display: none;
 }
@@ -50,7 +53,9 @@ body, html {
     margin-right: auto;
 }
 
-
+.link a {
+    padding: 0px 0px;
+}
 
 
 .game-info {
@@ -75,28 +80,21 @@ li {
     list-style: none;
 }
 
-.navbar {
-    width: 100%;
-    height: 60px;
-    margin: 0 -9999rem;
-    /* add back negative margin value */
-    padding: 0.25rem 9999rem;
-}
-
 nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px;
+    height: 120px;
     z-index: 1;
     background-color: white;
 }
 
 nav > ul {
+    width: 100%;
     list-style-type: none;
     margin-right: 74px;
-    
+    height: 120px;
     padding: 0;
     overflow: hidden;
     background-color: white;
@@ -119,14 +117,7 @@ nav li a:hover:not(.active) {
 }
 
 nav .title {
-    float: left;
-    padding-left: 90px;
-    margin-top: 8px;
-    padding-bottom: 8px;    
-}
-
-nav .link {
-    float: right;
+    padding: 0px 0px;
 }
 
 .card-title {
@@ -150,23 +141,8 @@ nav .link {
     z-index: 10;
 }
 
-.title1 {
-    color: green;
-}
-
-.title2 {
-    color: red;
-    margin-left: 18px;
-}
-
-.title1, .title2 {
-    font-size: 2.1rem;
-    font-weight: bold;
-}
 
 .title {
-    margin-top: 8px;
-    font-size: 36px;
     font-family: 'Roboto Mono', monospace;
     font-weight: 400;
     text-decoration-color: #e14658;
@@ -177,9 +153,16 @@ nav .link {
 .title h2 {
     color: #e14658;
     background-color: white;
-    margin-top: 3px;
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-size: 2rem;
 }
 
+.signout-btn {
+    position: fixed;
+    right: 0;
+    top: 2px;
+}
 table {
     border-collapse: collapse;
     width: 90%;
@@ -195,8 +178,12 @@ td, th {
     color: grey;
 }
 
+.profile-pic {
+    display: none;
+}
+
 tr:nth-child(even){
-    background-color: #f2f2f2
+    background-color: #f2f2f2;
 }
 
 th {
@@ -206,6 +193,12 @@ th {
 
 #avg {
     color: white;
+}
+
+.acc-btn {
+    position: fixed;
+    top: 2px;
+    left: 4px;
 }
 
 .active, .active:hover, .active:active {
@@ -222,6 +215,9 @@ th {
     margin-top: 120px;
 }
 
+.hometab {
+    display: initial;
+}
 .intro {
     background-color: #DBD8CC;
 }
@@ -230,7 +226,7 @@ th {
     margin-top: 50px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
     * {
         font-size: 1rem;
     }
@@ -244,6 +240,9 @@ th {
         margin-top: 100px;
     }
 
+    NavLink{
+        float: right;
+    }
     .comment-section {
         display: initial;
         float: right;
@@ -258,19 +257,25 @@ th {
         margin-left: 2rem;
     }
 
-    nav li, .title{
-        float: left;
+    nav {
+        height: 60px;
     }
-    
-    nav li a {
-
+    .link a {
         padding: 16px 16px;
     }
     
+    nav li a {
+        padding: 16px 16px;
+    }
+    nav > ul {
+        height: 60px;
+        width: auto;
+    }
     .profile-pic {
-        width: 56px;
-        height: 56px;
+        width: 60px;
+        height: 60px;
         margin-right: 5px;
+        display: initial;
     }
     .signout-btn {
         margin-top: 5px;
@@ -283,5 +288,22 @@ th {
 
     table {
         width: 50%;
+    }
+    nav .title {
+        padding-left: 90px;
+        margin-top: 8px;
+        padding-bottom: 8px;    
+    }
+    .title h2 {
+        color: #e14658;
+        background-color: white;
+        margin-top: 4px;
+        font-size: 3rem;
+    }
+    ul li:first-of-type {
+        display: initial;
+    }
+    .signout-btn, .acc-btn {
+        position: initial;
     }
 }

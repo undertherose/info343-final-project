@@ -4,7 +4,7 @@ import {SignUp} from './SignUp';
 import {Scores} from './Scores';
 import {UserAccount} from './UserAccount';
 import {CommentSection} from './Comment.jsx';
-import { HashRouter as Router, Route, NavLink, Redirect} from "react-router-dom";
+import { HashRouter as Router, Route, NavLink, Redirect, Link} from "react-router-dom";
 import { DropdownButton, NavDropdown, MenuItem } from 'react-bootstrap';
 import './App.css';
 import firebase from 'firebase';
@@ -131,12 +131,11 @@ class App extends Component {
                             <ul>
                                 
                                 <li className="link"><NavLink to="/home">Home</NavLink></li>
-                                <li className="link"><NavLink to="/games">Games</NavLink></li>
                                 <li className="link"><NavLink to="/snake">Snake</NavLink></li>
                                 <li className="link"><NavLink to="/reacteroids">Reacteroids</NavLink></li>
                                 <li className="link"><NavLink to="/fifteen">Fifteen Puzzle</NavLink></li>
                                 <li className="link"><NavLink to="/scores">Scores</NavLink></li>
-                                <li className="link"><DropdownButton
+                                {/* <li className="link"><DropdownButton
                                     bsStyle="primary"
                                     title="Account"
                                     key={1}
@@ -147,16 +146,18 @@ class App extends Component {
                                     <MenuItem divider />
                                     <MenuItem eventKey="1.4">Separated link</MenuItem>
                                     </DropdownButton>
-                                </li>
+                                </li> */}
                                 <li className="signout-btn float-right">
                                     {
                                     this.state.isLoggedIn && this.state.user &&
-                                    <button className="signout-btn btn btn-warning" onClick={() => this.handleSignOut()}>
-                                        Sign Out
-                                    </button>
+                                    <Link to="/signin">
+                                        <button className="signout-btn btn btn-warning" onClick={() => this.handleSignOut()}>
+                                            Sign Out
+                                        </button>
+                                    </Link>
                                     }
                                 </li>
-                                <li className="link float-right mr-4">
+                                <li className="acc-btn link float-right mr-4">
                                     {
                                         this.state.isLoggedIn && this.state.user &&
                                         <NavLink style={accountStyles} to="/acc">
@@ -207,7 +208,7 @@ class App extends Component {
                         )} />
                         <Route path="/signup" render={(routerProps) => (
                             this.state.isLoggedIn ? (
-                                <SnakeGame {...routerProps} updateScore = {(score) => this.updateScore(score)} />
+                                <Redirect to="/home"/>
                             ) : (
                                 <SignUp {...routerProps} handleSignUp={this.handleSignUp}/>
                             )
@@ -243,7 +244,7 @@ class App extends Component {
                     </div>
                 </Router>
                 {this.state.errorMessage &&
-                    <p className="alert alert-danger">{this.state.errorMessage}</p>
+                    <p>{this.state.errorMessage}</p>
                 }
             </div>
         );

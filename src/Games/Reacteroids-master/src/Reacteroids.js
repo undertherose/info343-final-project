@@ -260,9 +260,9 @@ export class Reacteroids extends Component {
           height={this.state.screen.height * this.state.screen.ratio}
         />
       </div>
-              <Link to="/comments">
-              <button className="btn btn-primary reacteroids-comments"> Leave a comment...</button>
-          </Link>
+            <Link to="/comments">
+                <button className="btn btn-primary reacteroids-comments"> Leave a comment...</button>
+            </Link>
           </div>
     );
   }
