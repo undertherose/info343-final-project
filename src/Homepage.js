@@ -8,6 +8,7 @@ import slide03 from "./imgs/slide03.png";
 import snake from "./imgs/snake.png";
 import fifteenpuzzle from "./imgs/fifteenpuzzle.png";
 import reacteroids from "./imgs/reacteroids.png";
+import {Link} from "react-router-dom";
 
 
 export class Homepage extends Component {
@@ -61,13 +62,13 @@ export class ControlledCarousel extends React.Component {
           onSelect={this.handleSelect}
         >
           <Carousel.Item>
-            <img width={900} height={500} alt="900x500" src={ slide01 } />
+            <img width={1150} height={500} alt="900x500" src={ slide01 } />
           </Carousel.Item>
           <Carousel.Item>
-            <img width={900} height={500} alt="900x500" src={ slide02 } />
+            <img width={1150} height={500} alt="900x500" src={ slide02 } />
           </Carousel.Item>
           <Carousel.Item>
-            <img width={900} height={500} alt="900x500" src={ slide03 } />
+            <img width={1150} height={500} alt="900x500" src={ slide03 } />
           </Carousel.Item>
         </Carousel>
       );
@@ -94,13 +95,15 @@ export class GameCard extends Component{
     render() {
         return (
             <div className="col-md-6 col-lg-4 d-flex align-items-stretch">
-                <div className="card w-100 text-center mb-4">
-                    <img className="card-img-top" src={ this.props.info.img } alt="Card image cap"/>
-                    <div className="card-body">
-                        <h3 className="card-title">{this.props.info.title}</h3>
-                        <p className="card-text">{this.props.info.text}</p>
+                <Link to={this.props.info.link}>
+                    <div className="card w-100 text-center mb-4">
+                        <img className="card-img-top" src={ this.props.info.img } alt="Card image cap"/>
+                        <div className="card-body">
+                            <h3 className="card-title">{this.props.info.title}</h3>
+                            <p className="card-text">{this.props.info.text}</p>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
         )
     }
@@ -113,9 +116,9 @@ export class CardList extends Component{
 
 
     render() {
-        let games = [{title: "Reacteroids", img: reacteroids, text: "..."},
-        {title: "Snake", img: snake, text: "..."},
-        {title: "Fifteen Puzzle", img: fifteenpuzzle, text: "..."}];
+        let games = [{title: "Reacteroids", img: reacteroids, text: "...", link: "/reacteroids"},
+        {title: "Snake", img: snake, text: "...", link: "/snake"},
+        {title: "Fifteen Puzzle", img: fifteenpuzzle, text: "...", link: "/fifteen"}];
         return (
             <div className="cardlist row">
                 {games.map((d, i) => {
