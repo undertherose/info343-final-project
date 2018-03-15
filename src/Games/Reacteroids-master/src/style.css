@@ -27,7 +27,7 @@ canvas {
 .score {
   display: block;
   position: absolute;
-  top: 25vh;
+  top: 10vh;
   z-index: 1;
   font-size: 14px;
 }
@@ -72,6 +72,13 @@ button:hover{
 
 @media (min-width: 1000px) { 
     .score, .controls {
-        top: 11vh;
+        top: 10vh;
     }
+
+}
+
+@media (max-width: 1000px) {
+  .score, .controls {
+    top: 16vh !important;
+  }
 }
