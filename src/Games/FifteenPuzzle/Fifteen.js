@@ -185,12 +185,20 @@ export class FifteenPuzzle extends Component {
                 }
                 </div>
                 {this.state.won && <div className="won">{"YOU WON IN " + (this.state.disabled && this.state.moves) + " MOVE(S)!!!"}</div>}
-                <button className="btn btn btn-warning" onClick={() => this.shuffle()}>Shuffle</button>
-                <label htmlFor="files" id="changePic" className="btn btn-primary">Change Image</label>
-                <input id="files" type="file" style={{ visibility: "hidden" }} onChange={(e) => this.changePic(e)}></input>
-                <Link className="link" to="/comments">
-                    <button id="comment" className="btn btn-primary"> Leave a comment...</button>
-                </Link>
+                <div className="fifteen-buttons">
+                    <div>
+                        <button className="btn btn-warning" onClick={() => this.shuffle()}>Shuffle</button>
+                    </div>
+                    <div>
+                        <label htmlFor="files" id="changePic" className="btn-lg btn-primary">Change Image</label>
+                        <input id="files" type="file" style={{ visibility: "hidden" }} onChange={(e) => this.changePic(e)}></input>
+                    </div>
+                    <div>
+                        <Link className="link" to="/comments">
+                            <button id="comment" className="btn btn-primary"> Leave a comment...</button>
+                        </Link>
+                    </div>
+                </div>
             </div>
         );
     }
