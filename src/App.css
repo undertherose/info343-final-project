@@ -255,7 +255,7 @@ nav li, .title {
         margin-top: 100px;
     }
 
-    .link NavLink{
+    NavLink{
         float: right;
     }
     .comment-section {
