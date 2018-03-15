@@ -45,7 +45,7 @@ body, .fifteen button {
 }
 
 .fifteen label {
-    color: black !important;
+    color: white !important;
     margin: 0px auto auto 2rem;
 }
 
@@ -61,6 +61,23 @@ body, .fifteen button {
     padding: 60px;
     box-shadow: 2px 2px 8px rgba(49,49,49,.5);
     border-radius: 5px;
+}
+
+label {
+    font-size: 2rem !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.link {
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+}
+
+.fifteen-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px !important;
 }
 /* 
 button.btn#comment {
