@@ -28,6 +28,10 @@
     background-color: grey;
 }
 
+.instructions {
+    font-size: 1.5rem;
+}
+
 .game-over{
     font-size: 3.5em;
 }

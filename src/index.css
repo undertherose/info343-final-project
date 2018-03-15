@@ -21,7 +21,7 @@ body {
   display: flex;
   flex-wrap: wrap !important;
   width: 100%;
-  justify-content: center;
+  justify-content: center !important;
 }
 
 .flex-item:last-of-type {
@@ -39,10 +39,6 @@ body {
 
 table {
   width: 250% !important;
-}
-
-.controls {
-  font-size: 10rem;
 }
 
 #avg {
@@ -96,6 +92,15 @@ button#comment {
 .form-group>textarea.form-control {
   width: 70%;
   margin-left: 15vw;
+}
+
+.form-control {
+  font-size: 1.5rem !important;
+  height: 5rem !important;
+}
+
+.dropdown-item {
+  font-size: 1.5rem !important;
 }
 
 @media(max-width:1000px) {
