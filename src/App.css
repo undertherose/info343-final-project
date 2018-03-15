@@ -9,7 +9,7 @@ html, body {
     min-height: 100%;
 }
 
-.auth, form, .snake-app, table {
+.auth, form, table {
     margin-top: 150px !important;
 }
 
@@ -18,19 +18,11 @@ body, html {
     padding-top: 6rem;
 }
 
-.body-segment {
-    position: absolute;
-    z-index: -1;
-}
-
 .scores-container {
     margin-top: 130px;
     width: 100%;
 }
 
-/* ul li:first-of-type {
-    display: none;
-} */
 .dropdown {
     padding: 0% 30%;
 }
@@ -44,37 +36,14 @@ body, html {
     display: none;
 }
 
-.container, .sub-container{
-    margin: 0px;
-    align-content: center;
-}
-
-.container, .sub-container, table, .snake-app {
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .link a {
     padding: 0px 0px;
-}
-
-
-.game-info {
-    background-color: grey;
-}
-
-.game-over{
-    font-size: 3.5em;
 }
 
 h2 {
     color: white;
     margin-top: 8px;
     text-align: center;
-}
-
-.hidden {
-    display: none;
 }
 
 li {
@@ -168,17 +137,6 @@ nav .title {
     padding-top: 10px !important;
 }
 
-.snake-app {
-    position: fixed;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    background-color: lightblue;
-    align-content: center;
-    display: block;
-    z-index: 10;
-}
-
 .signout-btn {
     position: fixed;
     right: 0;
@@ -250,7 +208,7 @@ nav li, .title {
         padding-bottom: 0px;
     }
     
-    .auth, form, .snake-app, table {
+    .auth, form, table {
         margin-top: 100px;
     }
 
@@ -303,10 +261,6 @@ nav li, .title {
     .signout-btn {
         margin-top: 0px;
         margin-right: 5px;
-    }
-
-    .snake-app {
-        left: 100px
     }
 
     nav li, .title {
