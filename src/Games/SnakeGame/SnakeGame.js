@@ -273,7 +273,7 @@ export class SnakeGame extends Component {
             { segments }
             {!this.state.isGameStarted &&
                 <div>
-                    <p className="instructions">In this version of Snek, the board is <em className="instructions">borderless</em>!</p>
+                    <p className="instructions">In this version of Snake, the board is <em className="instructions">borderless</em>!</p>
                     <p className="instructions">Press <strong>ENTER</strong> to start playing! Use the <strong>ARROW</strong> keys to move.</p>
                     <p className="instructions">Make sure to click anywhere on the board to toggle it active!</p>
                 </div>
