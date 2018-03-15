@@ -24,8 +24,7 @@ class App extends Component {
 
         this.state = {
             isLoggedIn: false,
-            currentGame: '',
-            score: 0
+            currentGame: ''
         };
     }
 
