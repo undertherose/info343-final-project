@@ -20,7 +20,6 @@ export class CommentSection extends Component {
             let comments = snapshot.val();
             this.setState({ comments: comments });
         });
-        console.log(this.requestRef);
     }
 
     //updates state of comment being written 
