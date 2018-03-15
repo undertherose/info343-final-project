@@ -82,6 +82,8 @@ class Charts extends Component {
         }));
     }
 
+    //function that takes an array and changes the fill color
+    //of the items in that array (used for radial chart)
     changeColor(array) {
         array.forEach((d) => {
             if (d.key === this.state.user) {
@@ -92,6 +94,9 @@ class Charts extends Component {
         })
     }
 
+    //function that takes in an array to iterate over and
+    //a name to filter by, returns an array representing
+    //data for specific user
     getData(array, name) {
         let returnArr = [];
         array.forEach((d) => {
@@ -102,6 +107,8 @@ class Charts extends Component {
         return returnArr;
     }
 
+    //function that takes an array to push to, data to filter by,
+    //and stateData to use. 
     pushData(array, data, stateData) {
         data.forEach((d) => {
             let arr = this.getData(stateData, d);
@@ -111,6 +118,8 @@ class Charts extends Component {
         });
     }
 
+    //function that takes in a user and data
+    //and returns that users top score for specific game
     getUserTopScore(user, data) {
         let obj = [];
         let rank = data.length;
@@ -137,6 +146,7 @@ class Charts extends Component {
             amount = 10;
         }
 
+        //stores data for rendering in radial chart and table
         for (let i = 0; i < amount; i++) {
             if (this.state.scoreData[i].name !== this.state.user) {
                 if (!names.includes(this.state.scoreData[i].name)) {
@@ -165,7 +175,7 @@ class Charts extends Component {
                                 <th>Username</th>
                                 <th>Score</th>
                             </tr>
-                            {
+                            {//top ten scores
                                 topTen.map((d, i) => {
                                     return (
                                         <tr key={'item-' + i}>
@@ -201,6 +211,7 @@ class Charts extends Component {
     }
 }
 
+//react component that renders a tooltip when hovering over the radial chart
 class CustomTooltip extends Component {
     constructor(props) {
         super(props);

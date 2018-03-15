@@ -5,6 +5,11 @@ import { randomNumBetweenExcluding } from './helpers';
 import {Link} from 'react-router-dom';
 import './style.css';
 
+//This game was borrowed from https://github.com/chriz001/Reacteroids
+//Many thanks to chriz001 for creating this amazing game
+//Most of the code from his repository is here unchanged except for minor changes
+//to account for styling within our application and database integration
+
 const KEY = {
   LEFT:  37,
   RIGHT: 39,
