@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Carousel, CarouselItem } from 'react-bootstrap';
-import background from "./imgs/background.png";
+import { Carousel } from 'react-bootstrap';
 import slide01 from "./imgs/slide01.png";
 import slide02 from "./imgs/slide02.png";
 import slide03 from "./imgs/slide03.png";
@@ -12,11 +11,6 @@ import { Link } from "react-router-dom";
 
 //react component that renders the homepage of the application
 export class Homepage extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="homepage">
@@ -99,7 +93,7 @@ export class GameCard extends Component {
 
                 <div className="card w-100 text-center mb-4">
                     <Link to={this.props.info.link}>
-                        <img className="card-img-top" src={this.props.info.img} alt="Card image cap" />
+                        <img className="card-img-top" src={this.props.info.img} alt="Card cap" />
                         <div className="card-body">
                             <h3 className="card-title">{this.props.info.title}</h3>
                             <p className="card-text">
@@ -117,11 +111,6 @@ export class GameCard extends Component {
 
 //React component that renders a list of bootstrap cards with game information, pictures, and names
 export class CardList extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-
     render() {
         let games = [{ title: "Reacteroids", img: reacteroids, text: "Developed By:", link: "/reacteroids" },
         { title: "Snake", img: snake, text: "Developed By: Mitchell Francisco", link: "/snake" },

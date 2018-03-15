@@ -68,6 +68,11 @@ label {
     font-family: 'Roboto', sans-serif !important;
 }
 
+#changePic {
+    font-weight: 500 !important;
+    color: black !important;
+}
+
 .link {
     margin-left: 0px !important;
     padding-left: 0px !important;

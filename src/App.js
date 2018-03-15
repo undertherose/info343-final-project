@@ -5,7 +5,6 @@ import { Scores } from './Scores';
 import { UserAccount } from './UserAccount';
 import { CommentSection } from './Comment.jsx';
 import { HashRouter as Router, Route, NavLink, Redirect, Link } from "react-router-dom";
-import { DropdownButton, NavDropdown, MenuItem } from 'react-bootstrap';
 import './App.css';
 import firebase from 'firebase';
 import { SnakeGame } from './Games/SnakeGame/SnakeGame.js';
