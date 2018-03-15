@@ -44,11 +44,9 @@ export class SignIn extends Component {
                 </div>
 
                 <div className="form-group col-md-4 mx-auto">
-                    <Link to="/home">
                     <button className="login-buttons btn btn-success mr-2 float-left" onClick={() => this.props.handleSignIn(this.state.email, this.state.password)}>
                         Sign In!
                     </button>
-                    </Link>
                     <Link to="/signup" className="login-buttons float-right">Don't have an account?</Link>
                 </div>
                 {this.state.errorMessage &&
