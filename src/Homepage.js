@@ -74,17 +74,6 @@ export class ControlledCarousel extends React.Component {
 export class GameCard extends Component {
     constructor(props) {
         super(props);
-        this.toggle = this.toggle.bind(this);
-        this.state = { collapse: false };
-    }
-
-    /*likeItem() {
-        let cardRef = firebase.database().ref('cards/' + this.props.info.key + '/likes');
-        cardRef.transaction((likes) => likes +1);
-    }*/
-
-    toggle() {
-        this.setState({ collapse: !this.state.collapse });
     }
 
     render() {

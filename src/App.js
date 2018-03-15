@@ -131,18 +131,6 @@ class App extends Component {
                         <nav>
                             <li><NavLink className="title" to="/home" activeStyle={{ textDecoration: "none" }}><h2>Arcode</h2></NavLink></li>
                            <ul>
-                                {/* <li className="link"><DropdownButton
-                                    bsStyle="primary"
-                                    title="Account"
-                                    key={1}
-                                    id={`dropdown-basic-1`}>
-                                    <MenuItem eventKey="1.1">Action</MenuItem>
-                                    <MenuItem eventKey="1.2">Another action</MenuItem>
-                                    <MenuItem eventKey="1.3" active>Active Item</MenuItem>
-                                    <MenuItem divider />
-                                    <MenuItem eventKey="1.4">Separated link</MenuItem>
-                                    </DropdownButton>
-                                </li> */}
                                 <li className="signout-btn float-right">
                                     {
                                         this.state.isLoggedIn && this.state.user &&
@@ -165,13 +153,6 @@ class App extends Component {
                                     }
                                 </li>
                                 <li className="link "><NavLink to="/scores" activeStyle={{ color: '#e14658', textDecoration: "none"}}>Scores</NavLink></li>
-                                {/* <li className="link"><NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                                    <MenuItem className="link" eventKey={3.1} >Logged In As</MenuItem>
-                                    <MenuItem divider />
-                                    <MenuItem className="link" eventKey={3.2} onClick={() => this.handleSignOut()}>Log Out</MenuItem>                        
-                                    </NavDropdown>
-                                </li> */}
-
                             </ul>
                         </nav>
                         <Route path="/home" component={Homepage} />
