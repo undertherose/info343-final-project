@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import {
-    RadialBarChart, RadialBar, Label, LabelList, Tooltip, Radar, RadarChart, PolarGrid,
-    PolarAngleAxis, PolarRadiusAxis, Legend
+    RadialBarChart, RadialBar, LabelList, Tooltip
 } from 'recharts';
 import * as d3 from 'd3';
 
@@ -223,10 +222,6 @@ class Charts extends Component {
 
 //react component that renders a tooltip when hovering over the radial chart
 class CustomTooltip extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let scoreType = this.props.name === "FifteenPuzzleScores" ? "move(s)" : "points";
         let object = this.props.data[this.props.label];

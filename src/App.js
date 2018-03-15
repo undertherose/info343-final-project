@@ -5,7 +5,6 @@ import { Scores } from './Scores';
 import { UserAccount } from './UserAccount';
 import { CommentSection } from './Comment.jsx';
 import { HashRouter as Router, Route, NavLink, Redirect, Link } from "react-router-dom";
-import { DropdownButton, NavDropdown, MenuItem } from 'react-bootstrap';
 import './App.css';
 import firebase from 'firebase';
 import { SnakeGame } from './Games/SnakeGame/SnakeGame.js';
@@ -165,7 +164,7 @@ class App extends Component {
                                         </NavLink>
                                     }
                                 </li>
-                                <li className="link float-right"><NavLink to="/scores" activeStyle={{ color: '#e14658', textDecoration: "none"}}>Scores</NavLink></li>
+                                <li className="link "><NavLink to="/scores" activeStyle={{ color: '#e14658', textDecoration: "none"}}>Scores</NavLink></li>
                                 {/* <li className="link"><NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                                     <MenuItem className="link" eventKey={3.1} >Logged In As</MenuItem>
                                     <MenuItem divider />
