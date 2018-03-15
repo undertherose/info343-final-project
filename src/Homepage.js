@@ -72,17 +72,13 @@ export class ControlledCarousel extends React.Component {
 
 //react component that renders a card with game information in it
 export class GameCard extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="col-md-6 col-lg-4 d-flex align-items-stretch">
 
                 <div className="card w-100 text-center mb-4">
                     <Link className="gameLink" to={this.props.info.link}>
-                        <img className="card-img-top" src={this.props.info.img} alt="Card image cap" />
+                        <img className="card-img-top" src={this.props.info.img} alt="Top of card" />
                         <div className="card-body">
                             <h3 className="card-title">{this.props.info.title}</h3>
                             <p className="card-text">
