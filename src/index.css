@@ -1,7 +1,8 @@
+
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
   overflow-y: hidden;
 }
 
@@ -32,7 +33,8 @@ body {
 }
 
 .game-comments h2 {
-    color: black;
+    color: #3F3250;
+
 }
 
 table {
@@ -63,14 +65,13 @@ table {
 ////////////////////////////////////////*/
 
 div.box {
-  border: 1px solid black;
+  color: white;
   margin: 1rem 15vw;
   border-radius: 4px;
   width: 70%;
   float: left;
   padding: 10px;
-  background-color: rgb(252, 247, 247);
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  background-color: #3F3250;
 }
 
 h3.box {
@@ -89,13 +90,12 @@ p.box {
 }
 
 button#comment {
-  margin-top: 0.5rem;
   margin-left: 15vw;
 }
 
 .form-group>textarea.form-control {
   width: 70%;
-  margin: 0 auto;
+  margin-left: 15vw;
 }
 
 @media(max-width:1000px) {

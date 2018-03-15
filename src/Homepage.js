@@ -92,8 +92,8 @@ export class GameCard extends Component {
             <div className="col-md-6 col-lg-4 d-flex align-items-stretch">
 
                 <div className="card w-100 text-center mb-4">
-                    <Link to={this.props.info.link}>
-                        <img className="card-img-top" src={this.props.info.img} alt="Card cap" />
+                    <Link className="gameLink" to={this.props.info.link}>
+                        <img className="card-img-top" src={this.props.info.img} alt="Card image cap" />
                         <div className="card-body">
                             <h3 className="card-title">{this.props.info.title}</h3>
                             <p className="card-text">
