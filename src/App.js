@@ -130,14 +130,8 @@ class App extends Component {
                 <Router>
                     <div className="sub-container">
                         <nav>
-                            <li className="title"><h2>Arcode</h2></li>
-                            <ul>
-
-                                <li className="link"><NavLink to="/home">Home</NavLink></li>
-                                <li className="link"><NavLink to="/snake">Snake</NavLink></li>
-                                <li className="link"><NavLink to="/reacteroids">Reacteroids</NavLink></li>
-                                <li className="link"><NavLink to="/fifteen">Fifteen Puzzle</NavLink></li>
-                                <li className="link"><NavLink to="/scores">Scores</NavLink></li>
+                            <li><NavLink className="title" to="/home" activeStyle={{ textDecoration: "none" }}><h2>Arcode</h2></NavLink></li>
+                           <ul>
                                 {/* <li className="link"><DropdownButton
                                     bsStyle="primary"
                                     title="Account"
@@ -163,7 +157,7 @@ class App extends Component {
                                 <li className="acc-btn link float-right mr-4">
                                     {
                                         this.state.isLoggedIn && this.state.user &&
-                                        <NavLink style={accountStyles} to="/acc">
+                                        <NavLink style={accountStyles} to="/acc" activeStyle={{ color: '#e14658', textDecoration: "none"}}>
                                             {this.state.user.photoURL &&
                                                 <img className="profile-pic" src={this.state.user.photoURL} alt="profile pic" />
                                             }
@@ -171,6 +165,7 @@ class App extends Component {
                                         </NavLink>
                                     }
                                 </li>
+                                <li className="link float-right"><NavLink to="/scores" activeStyle={{ color: '#e14658', textDecoration: "none"}}>Scores</NavLink></li>
                                 {/* <li className="link"><NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                                     <MenuItem className="link" eventKey={3.1} >Logged In As</MenuItem>
                                     <MenuItem divider />
