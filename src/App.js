@@ -164,7 +164,7 @@ class App extends Component {
                                         </NavLink>
                                     }
                                 </li>
-                                <li className="link float-right"><NavLink to="/scores" activeStyle={{ color: '#e14658', textDecoration: "none"}}>Scores</NavLink></li>
+                                <li className="link "><NavLink to="/scores" activeStyle={{ color: '#e14658', textDecoration: "none"}}>Scores</NavLink></li>
                                 {/* <li className="link"><NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                                     <MenuItem className="link" eventKey={3.1} >Logged In As</MenuItem>
                                     <MenuItem divider />
