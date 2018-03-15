@@ -99,6 +99,11 @@ button#comment {
   height: 5rem !important;
 }
 
+.login-buttons {
+  font-size: 1.5rem !important;
+  margin-top: 4rem !important;
+}
+
 .dropdown-item {
   font-size: 1.5rem !important;
 }

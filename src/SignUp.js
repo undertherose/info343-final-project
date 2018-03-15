@@ -52,10 +52,10 @@ export class SignUp extends Component {
                 </div>
 
                 <div className="form-group col-md-4 mx-auto">
-                    <button className="btn btn-primary mr-2 float-left" onClick={() => this.props.handleSignUp(this.state.email, this.state.password, this.state.username)}>
+                    <button className="login-buttons btn btn-primary mr-2 float-left" onClick={() => this.props.handleSignUp(this.state.email, this.state.password, this.state.username)}>
                         Sign Up
                      </button>
-                    <Link to="/signin" className="float-right">Already have an account?</Link>
+                    <Link to="/signin" className="login-buttons float-right">Already have an account?</Link>
                 </div>
             </div>
         )

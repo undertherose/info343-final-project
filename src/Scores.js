@@ -177,14 +177,24 @@ class Charts extends Component {
                             </tr>
                             {//top ten scores
                                 topTen.map((d, i) => {
-                                    return (
-                                        <tr key={'item-' + i}>
-                                            <td>{i + 1}</td>
-                                            <td>{Object.entries(d)[0][1]}</td>
-                                            <td>{Object.entries(d)[1][1]}</td>
-                                        </tr>
-                                    );
-                                }) 
+                                    if (d.name === this.state.user) {
+                                        return (
+                                            <tr className="userTopScore" key={'item-' + i}>
+                                                <td>{i + 1}</td>
+                                                <td>{Object.entries(d)[0][1]}</td>
+                                                <td>{Object.entries(d)[1][1]}</td>
+                                            </tr>
+                                        );
+                                    } else {
+                                        return (
+                                            <tr key={'item-' + i}>
+                                                <td>{i + 1}</td>
+                                                <td>{Object.entries(d)[0][1]}</td>
+                                                <td>{Object.entries(d)[1][1]}</td>
+                                            </tr>
+                                        );
+                                    }
+                                })
                             }
                             { /*Shows user top score if its not in the top 10*/
                                 userTopScore.rank > 10 && 
