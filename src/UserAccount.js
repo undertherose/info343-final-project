@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import firebase from 'firebase';
 
+//component representing the user account page
 export class UserAccount extends Component {
     constructor() {
         super();
@@ -23,6 +24,7 @@ export class UserAccount extends Component {
         this.setState(change);
     }
 
+    // Update the name and/or the avatar of the user profile
     updateProfile(name, url) {
         let user = firebase.auth().currentUser;
         let prof = {};
@@ -42,6 +44,7 @@ export class UserAccount extends Component {
         });
     }
 
+    // Update the email of the user
     updateEmail(email) {
         var user = firebase.auth().currentUser;
         let current = this;
@@ -55,6 +58,7 @@ export class UserAccount extends Component {
         });
     }
 
+    // Send an email to verify email address to the user
     sendEmailVerification() {
         var user = firebase.auth().currentUser;
 
@@ -82,6 +86,7 @@ export class UserAccount extends Component {
 
     }
 
+    // Deletes the user account
     deleteAcc() {
         var user = firebase.auth().currentUser;
         user.delete().then(function() {
@@ -92,25 +97,9 @@ export class UserAccount extends Component {
         this.props.isLoggedOut();
     }
 
-    reauthenticate() {
-        var user = firebase.auth().currentUser;
-        var credential;
-
-        // Prompt the user to re-provide their sign-in credentials
-        user.reauthenticateWithCredential(credential).then(function() {
-            // User re-authenticated.
-        }).catch(function(error) {
-            // An error happened.
-        });
-    }
-
     render() {
         let user = firebase.auth().currentUser;
-            // name = user.displayName;
-            // email = user.email;
-            // photoUrl = user.photoURL;
-            // emailVerified = user.emailVerified;
-            // uid = user.uid;
+
 
         return (
             <div>
