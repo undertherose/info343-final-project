@@ -1,0 +1,115 @@
+
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+}
+
+.navbar {
+    background-color: black;
+    width: 100%;
+    display: inline-block;
+    height: 60px;
+}
+
+.recharts-wrapper {
+  margin: 2rem auto auto 15rem;
+}
+.charts-container {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap !important;
+  width: 100%;
+  justify-content: center !important;
+}
+
+.flex-item:last-of-type {
+  flex-shrink: 2;
+}
+
+.game-comments .form-group, .game-comments h2{
+    margin-top: 70px;
+}
+
+.game-comments h2 {
+    color: #3F3250;
+
+}
+
+table {
+  width: 250% !important;
+}
+
+#avg {
+  position: relative;
+  color: #C0B3A0 !important;
+  left: 9%;
+  top: 12%;
+}
+
+.custom-tooltip {
+  background-color: azure;
+  padding: 25px 10px 15px 10px;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(49,49,49,.5);
+  border-radius: 2px;
+}
+
+/*////////////////////////////////////////
+////////////// For Comments /////////////
+////////////////////////////////////////*/
+
+div.box {
+  color: white;
+  margin: 1rem 15vw;
+  border-radius: 4px;
+  width: 70%;
+  float: left;
+  padding: 10px;
+  background-color: #3F3250;
+}
+
+h3.box {
+  font-size: 20pt;
+}
+
+h4.box {
+  font-size: 12pt;
+  margin-bottom: 1rem;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+
+p.box {
+  word-wrap: break-word;
+}
+
+button#comment {
+  margin-left: 15vw;
+}
+
+.form-group>textarea.form-control {
+  width: 70%;
+  margin-left: 15vw;
+}
+
+.form-control {
+  font-size: 1.5rem !important;
+  height: 5rem !important;
+}
+
+.login-buttons {
+  font-size: 1.5rem !important;
+  margin-top: 4rem !important;
+}
+
+.dropdown-item {
+  font-size: 1.5rem !important;
+}
+
+@media(max-width:1000px) {
+  .charts {
+    margin-right: 15rem;
+  }
+}

@@ -1,0 +1,91 @@
+.fifteen {
+    text-align: center;
+}
+
+body, .fifteen button {
+    font-size: 14pt;
+    font-family: 'Roboto', sans-serif;
+}
+
+#puzzlearea {
+    margin: 5rem auto auto auto;
+    height: 800px;
+    width: 800px;
+    position: relative;
+}
+
+.square {
+    transition: .5s;
+    color: black;
+    border: solid black 2px;
+    height: 198px;
+    width: 198px;
+    position: absolute;
+    font-size: 40pt;
+    cursor: default;
+    background-image: url("https://media.giphy.com/media/omAAeYvzPdVZK/giphy.gif");
+    background-repeat: no-repeat;
+    background-size: 800px 800px;
+    border-radius: 3px;
+    line-height: 185px;
+}
+
+.highlight {
+    color: red;
+    border: solid red 2px;
+    cursor: pointer;
+}
+
+.solved {
+    height: 200px;
+    width: 200px;
+    border: 0px;
+    border-radius: 0px;
+    font-size: 0px;
+}
+
+.fifteen label {
+    color: white !important;
+    margin: 0px auto auto 2rem;
+}
+
+.fifteen button {
+    margin-left: 20%;
+}
+
+.won {
+    position: absolute;
+    top: 42%;
+    left: 44%;
+    background-color: azure;
+    padding: 60px;
+    box-shadow: 2px 2px 8px rgba(49,49,49,.5);
+    border-radius: 5px;
+}
+
+label {
+    font-size: 2rem !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+#changePic {
+    font-weight: 500 !important;
+    color: black !important;
+}
+
+.link {
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+}
+
+.fifteen-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px !important;
+}
+/* 
+button.btn#comment {
+    margin-left: -14%; 
+    color: black;  
+} */

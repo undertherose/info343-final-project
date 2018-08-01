@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300i,400,700|Roboto+Mono:300,400,500,500i,700,700i|Ropa+Sans:400,400i');
+
+* {
+    font-size: 0.9rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+.auth, form, table {
+    margin-top: 150px !important;
+}
+
+body, html {
+    overflow-x: hidden;
+    padding-top: 6rem;
+}
+
+.scores-container {
+    margin-top: 130px;
+    width: 100%;
+}
+
+.dropdown {
+    padding: 0% 30%;
+}
+
+.reacteroids-comments {
+    position: fixed;
+    left: 0;
+    top: 190px;
+}
+.comment-section {
+    display: none;
+}
+
+.link a {
+    padding: 0px 0px;
+}
+
+h2 {
+    color: white;
+    margin-top: 8px;
+    text-align: center;
+}
+
+li {
+    list-style: none;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    z-index: 1;
+    background-color: white;
+}
+
+nav > ul {
+    width: 100%;
+    list-style-type: none;
+    margin-right: 74px ;
+    height: 20%;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+nav li a {
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 20px;
+    display: block;
+    color: #C0B3A0;
+    text-align: center;
+    padding: 8px 8px;
+    text-decoration: none;
+}
+
+nav li a:hover:not(.active) {
+    text-decoration: none;
+    font-style: italic;
+    color: #C0B3A0;
+}
+
+nav .title {
+    padding: 0px 0px;
+}
+
+.title {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    text-decoration-color: #e14658;
+    clear: both;
+    float: none;
+}
+
+.title h2 {
+    color: #e14658;
+    background-color: white;
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-size: 2rem;
+}
+
+.title:hover {
+    color: #3F3250;
+}
+
+.active:hover {
+    text-decoration: none;
+    color: #e14658;
+}
+
+.cardlist {
+    margin-top: 50px;
+}
+
+.gameLink:hover {
+    text-decoration: none;
+}
+
+.gameLink .card-title:hover {
+    color: #C0B3A0;
+}
+
+.card-title {
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 30px;
+    color: #3F3250;
+}
+
+.signout2 {
+    padding-top: 10px !important;
+}
+
+.signout-btn {
+    position: fixed;
+    right: 0;
+    top: 2px;
+    margin-right: 5px;
+    font-size: 1.5rem !important;
+    
+}
+table {
+    border-collapse: collapse;
+    width: 90%;
+    background-color: white;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+.timeStamp {
+    color: grey;
+}
+
+.profile-pic {
+    display: none;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+th {
+    background-color: #3F3250;
+    color: white;
+}
+
+nav li, .title {
+    float: none !important;
+}
+#avg {
+    color: white;
+}
+
+.acc-btn {
+    position: fixed;
+    top: 2px;
+    left: 4px;
+}
+
+.userTopScore {
+    color: #e14658;
+}
+
+.hometab {
+    display: initial;
+}
+
+@media (min-width: 1000px) {
+    * {
+        font-size: 1rem;
+    }
+
+    .comments-link {
+        padding-top: 1000px !important;
+    }
+
+    .account-link {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    
+    .auth, form, table {
+        margin-top: 100px;
+    }
+
+    NavLink{
+        float: right;
+    }
+
+    .comment-section {
+        display: initial;
+        float: right;
+    }
+    
+    .gameOver{
+        font-size: 7em;
+    }
+
+    h2 {
+        margin-right: 5rem;
+        margin-left: 2rem;
+    }
+
+    .reacteroids-comments {
+        position: fixed;
+        left: 0;
+        top: 130px;
+    }
+    nav {
+        height: 60px;
+    }
+
+    .link a {
+        padding: 16px 16px;
+    }
+    
+    nav li a {
+        padding: 16px 16px;
+    }
+    nav > ul {
+        height: 60px;
+        width: auto;
+    }
+    .profile-pic {
+        width: 60px;
+        height: 60px;
+        margin-right: 5px;
+        display: initial;
+        border-radius: 50px;
+        padding: 3px; 
+    }
+    .signout-btn {
+        margin-top: 0px;
+        margin-right: 5px;
+    }
+
+    nav li, .title {
+        float: left !important;
+    }
+
+    table {
+        width: 50%;
+    }
+    nav .title {
+        padding-left: 90px;
+        margin-top: 8px;
+        padding-bottom: 8px;    
+    }
+    .title h2 {
+        color: #e14658;
+        background-color: white;
+        margin-top: 4px;
+        font-size: 3rem;
+    }
+    ul li:first-of-type {
+        display: initial;
+    }
+    .signout-btn, .acc-btn {
+        position: initial;
+    }
+}
