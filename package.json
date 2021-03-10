@@ -1,29 +1,43 @@
 {
-  "name": "info343-final-project",
-  "homepage": "http://staff.washington.edu/francmit/info343/arcode",
+  "name": "arcode",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://francmit.github.io/arcode",
   "dependencies": {
-    "bootstrap": "^4.0.0",
-    "d3": "^4.13.0",
-    "firebase": "^4.10.1",
-    "fs": "0.0.1-security",
-    "gh-pages": "^1.1.0",
-    "konva": "^1.7.6",
-    "react": "^16.2.0",
-    "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.2.0",
-    "react-helmet": "^5.2.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1",
-    "react-transition-group": "^2.2.1",
-    "recharts": "^1.0.0-beta.10"
+    "bootstrap": "^4.3.1",
+    "d3": "^5.9.7",
+    "eslint": "^6.0.1",
+    "firebase": "^6.3.0",
+    "gh-pages": "^2.0.1",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.9",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^3.0.1",
+    "recharts": "^1.6.2"
   },
   "scripts": {
-    "deploy": "npm run build&&gh-pages -d build",
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
