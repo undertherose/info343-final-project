@@ -1,12 +1,23 @@
 {
-  "main.css": "static/css/main.e4cce530.css",
-  "main.css.map": "static/css/main.e4cce530.css.map",
-  "main.js": "static/js/main.7c60d2af.js",
-  "main.js.map": "static/js/main.7c60d2af.js.map",
-  "static/media/fifteenpuzzle.png": "static/media/fifteenpuzzle.bdc8e13f.png",
-  "static/media/reacteroids.png": "static/media/reacteroids.abfcdc72.png",
-  "static/media/slide01.png": "static/media/slide01.6f3ee2d1.png",
-  "static/media/slide02.png": "static/media/slide02.34a14161.png",
-  "static/media/slide03.png": "static/media/slide03.d4d5acba.png",
-  "static/media/snake.png": "static/media/snake.5c33e1fd.png"
+  "files": {
+    "main.css": "/arcode/static/css/main.def71ec7.chunk.css",
+    "main.js": "/arcode/static/js/main.92a3bef9.chunk.js",
+    "main.js.map": "/arcode/static/js/main.92a3bef9.chunk.js.map",
+    "runtime~main.js": "/arcode/static/js/runtime~main.1317307e.js",
+    "runtime~main.js.map": "/arcode/static/js/runtime~main.1317307e.js.map",
+    "static/css/2.22a7d4ef.chunk.css": "/arcode/static/css/2.22a7d4ef.chunk.css",
+    "static/js/2.46120431.chunk.js": "/arcode/static/js/2.46120431.chunk.js",
+    "static/js/2.46120431.chunk.js.map": "/arcode/static/js/2.46120431.chunk.js.map",
+    "index.html": "/arcode/index.html",
+    "precache-manifest.64ef022f325e2a17707febdb31a81a18.js": "/arcode/precache-manifest.64ef022f325e2a17707febdb31a81a18.js",
+    "service-worker.js": "/arcode/service-worker.js",
+    "static/css/2.22a7d4ef.chunk.css.map": "/arcode/static/css/2.22a7d4ef.chunk.css.map",
+    "static/css/main.def71ec7.chunk.css.map": "/arcode/static/css/main.def71ec7.chunk.css.map",
+    "static/media/fifteenpuzzle.png": "/arcode/static/media/fifteenpuzzle.bdc8e13f.png",
+    "static/media/reacteroids.png": "/arcode/static/media/reacteroids.abfcdc72.png",
+    "static/media/slide01.png": "/arcode/static/media/slide01.6f3ee2d1.png",
+    "static/media/slide02.png": "/arcode/static/media/slide02.34a14161.png",
+    "static/media/slide03.png": "/arcode/static/media/slide03.d4d5acba.png",
+    "static/media/snake.png": "/arcode/static/media/snake.5c33e1fd.png"
+  }
 }
